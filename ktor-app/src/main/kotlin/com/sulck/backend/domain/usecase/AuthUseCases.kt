@@ -5,6 +5,7 @@ import com.sulck.backend.domain.entity.User
 import com.sulck.backend.domain.repository.UserRepository
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import at.favre.lib.crypto.bcrypt.BCrypt
 import java.time.Instant
 import java.util.UUID
 import javax.inject.Inject
@@ -16,15 +17,18 @@ class CreateUserUseCase @Inject constructor(
         email: String,
         phone: String,
         fullName: String,
-        passwordHash: String
-    ): User = userRepository.create(
-        User(
-            email = email,
-            phone = phone,
-            fullName = fullName,
-            passwordHash = passwordHash
+        password: String
+    ): User {
+        val passwordHash = BCrypt.withDefaults().hashToString(12, password.toCharArray())
+        return userRepository.create(
+            User(
+                email = email,
+                phone = phone,
+                fullName = fullName,
+                passwordHash = passwordHash
+            )
         )
-    )
+    }
 }
 
 class GetUserUseCase @Inject constructor(
@@ -62,8 +66,11 @@ class AuthenticateUserUseCase @Inject constructor(
     }
 
     private fun verifyPassword(password: String, hash: String): Boolean {
-        // TODO: Use BCrypt or Argon2
-        return password == hash // Placeholder
+        return try {
+            BCrypt.verifyer().verify(password.toCharArray(), hash).verified
+        } catch (e: Exception) {
+            false
+        }
     }
 
     private fun createAccessToken(userId: UUID): String = JWT.create()

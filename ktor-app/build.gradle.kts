@@ -46,6 +46,7 @@ dependencies {
     // Security
     implementation("org.bouncycastle:bcprov-jdk18on:1.78")
     implementation("com.auth0:java-jwt:4.5.0")
+    implementation("at.favre.lib:bcrypt:0.10.2")
 
     // Testing
     testImplementation("io.ktor:ktor-server-test-host-jvm:2.3.11")

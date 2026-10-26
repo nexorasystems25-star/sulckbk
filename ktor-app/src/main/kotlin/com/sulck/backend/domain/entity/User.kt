@@ -13,6 +13,7 @@ data class User(
     val passwordHash: String,
     val isActive: Boolean = true,
     val isVerified: Boolean = false,
+    val isAdmin: Boolean = false,
     val createdAt: Instant = Instant.now(),
     val updatedAt: Instant = Instant.now(),
     val lastLoginAt: Instant? = null

@@ -1,10 +1,7 @@
 package com.sulck.backend.presentation.routes
 
-import com.sulck.backend.domain.usecase.AdminUseCases
-import com.sulck.backend.domain.usecase.AuthUseCases
-import com.sulck.backend.domain.usecase.GoalUseCases
-import com.sulck.backend.domain.usecase.StreakUseCases
-import com.sulck.backend.domain.usecase.TransactionUseCases
+import com.sulck.backend.config.PaystackConfig
+import com.sulck.backend.domain.usecase.*
 import com.sulck.backend.infrastructure.service.PaystackService
 import com.sulck.backend.presentation.dto.*
 import io.ktor.server.application.*
@@ -17,6 +14,9 @@ import io.ktor.http.*
 import io.ktor.server.request.*
 import java.util.UUID
 import kotlinx.coroutines.*
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
 
 fun Routing.configureRoutes(
     authUseCases: AuthUseCases,
@@ -24,7 +24,12 @@ fun Routing.configureRoutes(
     transactionUseCases: TransactionUseCases,
     streakUseCases: StreakUseCases,
     adminUseCases: AdminUseCases,
-    paystackService: PaystackService
+    paystackService: PaystackService,
+    paystackConfig: PaystackConfig,
+    getUserUseCase: GetUserUseCase,
+    createGoalUseCase: CreateGoalUseCase,
+    listGoalsUseCase: ListGoalsUseCase,
+    getTransactionHistoryUseCase: GetTransactionHistoryUseCase
 ) {
     // Health check
     get("/health") {
@@ -39,7 +44,7 @@ fun Routing.configureRoutes(
                 request.email,
                 request.phone,
                 request.fullName,
-                request.password // TODO: hash password
+                request.password
             )
             call.respond(AuthResponse.Register(user))
         }
@@ -65,7 +70,7 @@ fun Routing.configureRoutes(
             get("/me") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
                 val userId = UUID.fromString(principal.name)
-                val user = get<com.sulck.backend.domain.usecase.GetUserUseCase>().invoke(userId)
+                val user = getUserUseCase(userId)
                 user?.let { call.respond(AuthResponse.Me(it)) }
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
             }
@@ -80,7 +85,7 @@ fun Routing.configureRoutes(
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
                 val userId = UUID.fromString(principal.name)
 
-                val output = get<com.sulck.backend.domain.usecase.CreateGoalUseCase>().invoke(
+                val output = createGoalUseCase(
                     GoalUseCases.CreateGoalUseCase.Input(
                         userId = userId,
                         title = request.title,
@@ -99,7 +104,7 @@ fun Routing.configureRoutes(
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
                 val userId = UUID.fromString(principal.name)
                 val activeOnly = call.request.queryParameters["activeOnly"]?.toBoolean() ?: true
-                val goals = get<com.sulck.backend.domain.usecase.ListGoalsUseCase>().invoke(userId, activeOnly)
+                val goals = listGoalsUseCase(userId, activeOnly)
                 call.respond(GoalResponse.List(goals))
             }
 
@@ -144,7 +149,7 @@ fun Routing.configureRoutes(
                 val userId = UUID.fromString(principal.name)
                 val limit = call.request.queryParameters["limit"]?.toInt() ?: 50
                 val offset = call.request.queryParameters["offset"]?.toInt() ?: 0
-                val transactions = get<com.sulck.backend.domain.usecase.GetTransactionHistoryUseCase>().invoke(userId, limit, offset)
+                val transactions = getTransactionHistoryUseCase(userId, limit, offset)
                 call.respond(TransactionResponse.List(transactions))
             }
         }
@@ -166,7 +171,14 @@ fun Routing.configureRoutes(
             get("/stats") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
                 val userId = UUID.fromString(principal.name)
-                // TODO: Check if user is admin
+                val user = getUserUseCase(userId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!user.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@get
+                }
+
                 val stats = adminUseCases()
                 call.respond(stats)
             }
@@ -179,8 +191,13 @@ fun Routing.configureRoutes(
         val signature = call.request.headers["x-paystack-signature"] ?: ""
         val event = call.request.headers["x-paystack-event"] ?: ""
 
-        // TODO: Verify signature with paystack secret
-        // For now, just process
+        // Verify Paystack signature
+        val isValid = verifyPaystackSignature(payload, signature, paystackConfig.webhookSecret)
+        if (!isValid) {
+            call.respond(HttpStatusCode.Unauthorized, mapOf("error" to "Invalid signature"))
+            return@post
+        }
+
         if (event == "charge.success" || event == "charge.failed") {
             val data = kotlinx.serialization.json.Json.decodeFromString<PaystackWebhookData>(payload)
             val result = transactionUseCases.ProcessWebhookUseCase.invoke(
@@ -196,6 +213,19 @@ fun Routing.configureRoutes(
         } else {
             call.respond(HttpStatusCode.OK, mapOf("status" to "ignored"))
         }
+    }
+}
+
+private fun verifyPaystackSignature(payload: String, signature: String, secret: String): Boolean {
+    return try {
+        val hmacSha512 = Mac.getInstance("HmacSHA512")
+        val secretKey = SecretKeySpec(secret.toByteArray(), "HmacSHA512")
+        hmacSha512.init(secretKey)
+        val digest = hmacSha512.doFinal(payload.toByteArray())
+        val expectedSignature = Base64.getEncoder().encodeToString(digest)
+        expectedSignature == signature
+    } catch (e: Exception) {
+        false
     }
 }
 

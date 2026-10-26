@@ -2,13 +2,16 @@ package com.sulck.backend
 
 import com.sulck.backend.config.DatabaseConfig
 import com.sulck.backend.config.JwtConfig
+import com.sulck.backend.config.PaystackConfig
 import com.sulck.backend.config.ServerConfig
 import com.sulck.backend.di.module
 import com.sulck.backend.domain.repository.*
+import com.sulck.backend.domain.usecase.*
 import com.sulck.backend.infrastructure.repository.ExposedGoalRepository
 import com.sulck.backend.infrastructure.repository.ExposedUserRepository
 import com.sulck.backend.infrastructure.repository.ExposedTransactionRepository
 import com.sulck.backend.infrastructure.repository.ExposedStreakRepository
+import com.sulck.backend.infrastructure.service.PaystackService
 import com.sulck.backend.presentation.routes.configureRoutes
 import org.jetbrains.koin.core.component.KoinComponent
 import org.jetbrains.koin.core.inject
@@ -110,6 +113,30 @@ fun Application.configureApplication() {
         level = io.ktor.util.logging.Level.INFO
     }
 
+    val authUseCases by inject<AuthUseCases>()
+    val goalUseCases by inject<GoalUseCases>()
+    val transactionUseCases by inject<TransactionUseCases>()
+    val streakUseCases by inject<StreakUseCases>()
     val adminUseCases by inject<AdminUseCases>()
-    configureRoutes(this, adminUseCases = adminUseCases)
+    val paystackService by inject<PaystackService>()
+    val paystackConfig = PaystackConfig.load()
+    val getUserUseCase by inject<GetUserUseCase>()
+    val createGoalUseCase by inject<CreateGoalUseCase>()
+    val listGoalsUseCase by inject<ListGoalsUseCase>()
+    val getTransactionHistoryUseCase by inject<GetTransactionHistoryUseCase>()
+
+    configureRoutes(
+        this,
+        authUseCases = authUseCases,
+        goalUseCases = goalUseCases,
+        transactionUseCases = transactionUseCases,
+        streakUseCases = streakUseCases,
+        adminUseCases = adminUseCases,
+        paystackService = paystackService,
+        paystackConfig = paystackConfig,
+        getUserUseCase = getUserUseCase,
+        createGoalUseCase = createGoalUseCase,
+        listGoalsUseCase = listGoalsUseCase,
+        getTransactionHistoryUseCase = getTransactionHistoryUseCase
+    )
 }
