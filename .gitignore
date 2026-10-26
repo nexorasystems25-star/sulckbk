@@ -1,0 +1,38 @@
+# Gradle
+.gradle
+build/
+*.iml
+
+# IDE
+.idea/
+*.iml
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Docker
+docker-compose.override.yml
+
+# Database
+*.db
+*.sqlite
+
+# Test reports
+**/build/reports/
+
+# Gradle wrapper
+gradle/wrapper/gradle-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db
