@@ -191,7 +191,97 @@ data class StreakSummary(
 )
 
 @Serializable
+data class DeviceStatusResponse(
+    val devices: List<DeviceStatus>
+)
+
+@Serializable
+data class DeviceStatus(
+    val userId: UUID,
+    val userEmail: String,
+    val userPhone: String,
+    val lockLevel: String,
+    val missedDays: Int,
+    val currentStreak: Int,
+    val status: String,
+    val isLocked: Boolean,
+    val isAppLocked: Boolean,
+    val isTempLocked: Boolean,
+    val isFullyLocked: Boolean,
+    val lastDepositAt: java.time.Instant?,
+    val lastMissedAt: java.time.Instant?,
+    val lockoutUntil: java.time.Instant?,
+    val tempLockTimestamp: java.time.Instant?,
+    val appLockTimestamp: java.time.Instant?,
+    val lockedAssetSerial: String?,
+    val goalProgress: Double?,
+    val goalTarget: Long?,
+    val goalRemaining: Long?
+)
+
+@Serializable
+data class EmergencyUnlockRequestResponse(
+    val request: EmergencyUnlockRequestSummary?
+)
+
+@Serializable
+data class EmergencyUnlockRequestSummary(
+    val id: UUID,
+    val userId: UUID,
+    val policyId: UUID,
+    val requestedBy: UUID,
+    val fromLockLevel: String,
+    val toLockLevel: String,
+    val reason: String,
+    val durationHours: Int?,
+    val status: String,
+    val approvedBy: UUID?,
+    val approvedAt: java.time.Instant?,
+    val rejectedBy: UUID?,
+    val rejectedAt: java.time.Instant?,
+    val rejectionReason: String?,
+    val effectiveAt: java.time.Instant?,
+    val expiresAt: java.time.Instant?,
+    val createdAt: java.time.Instant
+)
+
+@Serializable
+data class EmergencyContactResponse(
+    val contacts: List<EmergencyContactSummary>
+)
+
+@Serializable
+data class EmergencyContactSummary(
+    val id: UUID,
+    val userId: UUID,
+    val contactType: String,
+    val contactValue: String,
+    val status: String,
+    val priority: String,
+    val reason: String?,
+    val notes: String?,
+    val resolvedAt: java.time.Instant?,
+    val createdAt: java.time.Instant
+)
+
+@Serializable
 data class ErrorResponse(
     val error: String,
     val message: String? = null
+)
+
+@Serializable
+data class EmergencyUnlockInput(
+    val userId: UUID,
+    val policyId: UUID,
+    val fromLockLevel: String,
+    val toLockLevel: String,
+    val reason: String,
+    val durationHours: Int? = null,
+    val contactId: UUID? = null
+)
+
+@Serializable
+data class RejectUnlockInput(
+    val reason: String
 )

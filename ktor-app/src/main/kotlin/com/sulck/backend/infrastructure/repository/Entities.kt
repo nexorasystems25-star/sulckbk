@@ -11,6 +11,7 @@ import com.sulck.backend.domain.entity.Streak
 import com.sulck.backend.domain.entity.StreakEvent
 import com.sulck.backend.domain.entity.StreakEventType
 import com.sulck.backend.domain.entity.StreakStatus
+import com.sulck.backend.domain.entity.LockLevel
 import com.sulck.backend.infrastructure.schema.Goals
 import com.sulck.backend.infrastructure.schema.StreakEvents
 import com.sulck.backend.infrastructure.schema.Streaks
@@ -182,9 +183,13 @@ class StreakEntity(id: EntityID<UUID>) : UUIDEntity(id) {
     var longestStreak by Streaks.longestStreak
     var missedDays by Streaks.missedDays
     var status by Streaks.status
+    var lockLevel by Streaks.lockLevel
     var lastDepositAt by Streaks.lastDepositAt
     var lastMissedAt by Streaks.lastMissedAt
     var lockoutUntil by Streaks.lockoutUntil
+    var tempLockTimestamp by Streaks.tempLockTimestamp
+    var warningIssuedAt by Streaks.warningIssuedAt
+    var appLockTimestamp by Streaks.appLockTimestamp
     var createdAt by Streaks.createdAt
     var updatedAt by Streaks.updatedAt
 
@@ -195,9 +200,13 @@ class StreakEntity(id: EntityID<UUID>) : UUIDEntity(id) {
         longestStreak = longestStreak,
         missedDays = missedDays,
         status = status,
+        lockLevel = lockLevel,
         lastDepositAt = lastDepositAt,
         lastMissedAt = lastMissedAt,
         lockoutUntil = lockoutUntil,
+        tempLockTimestamp = tempLockTimestamp,
+        warningIssuedAt = warningIssuedAt,
+        appLockTimestamp = appLockTimestamp,
         createdAt = createdAt,
         updatedAt = updatedAt
     )
@@ -211,9 +220,13 @@ class StreakEntity(id: EntityID<UUID>) : UUIDEntity(id) {
                 longestStreak = streak.longestStreak
                 missedDays = streak.missedDays
                 status = streak.status
+                lockLevel = streak.lockLevel
                 lastDepositAt = streak.lastDepositAt
                 lastMissedAt = streak.lastMissedAt
                 lockoutUntil = streak.lockoutUntil
+                tempLockTimestamp = streak.tempLockTimestamp
+                warningIssuedAt = streak.warningIssuedAt
+                appLockTimestamp = streak.appLockTimestamp
                 createdAt = streak.createdAt
                 updatedAt = streak.updatedAt
             }

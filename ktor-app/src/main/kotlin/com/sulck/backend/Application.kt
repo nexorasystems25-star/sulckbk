@@ -118,6 +118,7 @@ fun Application.configureApplication() {
     val transactionUseCases by inject<TransactionUseCases>()
     val streakUseCases by inject<StreakUseCases>()
     val adminUseCases by inject<AdminUseCases>()
+    val emergencyUnlockUseCases by inject<EmergencyUnlockUseCases>()
     val paystackService by inject<PaystackService>()
     val paystackConfig = PaystackConfig.load()
     val getUserUseCase by inject<GetUserUseCase>()
@@ -132,6 +133,7 @@ fun Application.configureApplication() {
         transactionUseCases = transactionUseCases,
         streakUseCases = streakUseCases,
         adminUseCases = adminUseCases,
+        emergencyUnlockUseCases = emergencyUnlockUseCases,
         paystackService = paystackService,
         paystackConfig = paystackConfig,
         getUserUseCase = getUserUseCase,

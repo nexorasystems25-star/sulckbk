@@ -11,4 +11,5 @@ interface StreakRepository {
     suspend fun upsert(streak: Streak): Streak
     suspend fun recordEvent(event: StreakEvent): StreakEvent
     suspend fun getEventsByUserId(userId: UUID, limit: Int = 50): List<StreakEvent>
+    suspend fun findAll(): List<Streak>
 }

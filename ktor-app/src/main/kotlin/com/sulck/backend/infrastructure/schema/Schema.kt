@@ -4,6 +4,7 @@ import com.sulck.backend.domain.entity.GoalStatus
 import com.sulck.backend.domain.entity.GoalTier
 import com.sulck.backend.domain.entity.StreakEventType
 import com.sulck.backend.domain.entity.StreakStatus
+import com.sulck.backend.domain.entity.LockLevel
 import com.sulck.backend.domain.entity.TransactionStatus
 import com.sulck.backend.domain.entity.TransactionType
 import org.jetbrains.exposed.sql.Table
@@ -71,9 +72,13 @@ object Streaks : Table() {
     val longestStreak = int("longest_streak").default(0)
     val missedDays = int("missed_days").default(0)
     val status = enumByName<StreakStatus>("status").default(StreakStatus.ACTIVE)
+    val lockLevel = enumByName<LockLevel>("lock_level").default(LockLevel.NONE)
     val lastDepositAt = datetime("last_deposit_at").nullable()
     val lastMissedAt = datetime("last_missed_at").nullable()
     val lockoutUntil = datetime("lockout_until").nullable()
+    val tempLockTimestamp = datetime("temp_lock_timestamp").nullable()
+    val warningIssuedAt = datetime("warning_issued_at").nullable()
+    val appLockTimestamp = datetime("app_lock_timestamp").nullable()
     val createdAt = datetime("created_at")
     val updatedAt = datetime("updated_at")
 }
@@ -88,8 +93,67 @@ object StreakEvents : Table() {
     val createdAt = datetime("created_at")
 }
 
+object EmergencyContacts : Table() {
+    val id = uuid("id").primaryKey()
+    val userId = uuid("user_id").index()
+    val contactType = varchar("contact_type", 50)
+    val contactValue = varchar("contact_value", 255)
+    val status = varchar("status", 50).default("OPEN")
+    val priority = varchar("priority", 50).default("NORMAL")
+    val reason = varchar("reason", 500).nullable()
+    val notes = varchar("notes", 1000).nullable()
+    val resolvedAt = datetime("resolved_at").nullable()
+    val createdAt = datetime("created_at")
+    val updatedAt = datetime("updated_at")
+}
+
+object EmergencyUnlockPolicies : Table() {
+    val id = uuid("id").primaryKey()
+    val name = varchar("name", 255)
+    val description = varchar("description", 1000)
+    val maxUnlocksPerMonth = int("max_unlocks_per_month")
+    val maxUnlockDurationHours = int("max_unlock_duration_hours")
+    val requiresApproval = bool("requires_approval").default(true)
+    val allowedFromLockLevels = varchar("allowed_from_lock_levels", 500)
+    val allowedToLockLevels = varchar("allowed_to_lock_levels", 500)
+    val isActive = bool("is_active").default(true)
+    val createdAt = datetime("created_at")
+    val updatedAt = datetime("updated_at")
+}
+
+object EmergencyUnlockRequests : Table() {
+    val id = uuid("id").primaryKey()
+    val userId = uuid("user_id").index()
+    val contactId = uuid("contact_id").nullable().index()
+    val policyId = uuid("policy_id").index()
+    val requestedBy = uuid("requested_by")
+    val fromLockLevel = varchar("from_lock_level", 50)
+    val toLockLevel = varchar("to_lock_level", 50)
+    val reason = varchar("reason", 1000)
+    val durationHours = int("duration_hours").nullable()
+    val status = varchar("status", 50).default("PENDING")
+    val approvedBy = uuid("approved_by").nullable()
+    val approvedAt = datetime("approved_at").nullable()
+    val rejectedBy = uuid("rejected_by").nullable()
+    val rejectedAt = datetime("rejected_at").nullable()
+    val rejectionReason = varchar("rejection_reason", 500).nullable()
+    val effectiveAt = datetime("effective_at").nullable()
+    val expiresAt = datetime("expires_at").nullable()
+    val createdAt = datetime("created_at")
+    val updatedAt = datetime("updated_at")
+}
+
 object Schema {
     fun createTables() {
-        org.jetbrains.exposed.sql.SchemaUtils.create(Users, Goals, Transactions, Streaks, StreakEvents)
+        org.jetbrains.exposed.sql.SchemaUtils.create(
+            Users,
+            Goals,
+            Transactions,
+            Streaks,
+            StreakEvents,
+            EmergencyContacts,
+            EmergencyUnlockPolicies,
+            EmergencyUnlockRequests
+        )
     }
 }

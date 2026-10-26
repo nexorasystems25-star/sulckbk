@@ -45,9 +45,13 @@ class ExposedStreakRepository : StreakRepository, KoinComponent {
                 longestStreak = streak.longestStreak
                 missedDays = streak.missedDays
                 status = streak.status
+                lockLevel = streak.lockLevel
                 lastDepositAt = streak.lastDepositAt
                 lastMissedAt = streak.lastMissedAt
                 lockoutUntil = streak.lockoutUntil
+                tempLockTimestamp = streak.tempLockTimestamp
+                warningIssuedAt = streak.warningIssuedAt
+                appLockTimestamp = streak.appLockTimestamp
                 updatedAt = streak.updatedAt
             }
             ?: StreakEntity.fromDomain(streak)
@@ -64,5 +68,9 @@ class ExposedStreakRepository : StreakRepository, KoinComponent {
             .orderByDescending(StreakEvents.createdAt)
             .limit(limit)
             .map { it.toDomain() }
+    }
+
+    override suspend fun findAll(): List<Streak> = transaction {
+        Streaks.selectAll().map { it.toDomain() }
     }
 }

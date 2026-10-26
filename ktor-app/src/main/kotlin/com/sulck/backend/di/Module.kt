@@ -9,6 +9,9 @@ import com.sulck.backend.domain.repository.GoalRepository
 import com.sulck.backend.domain.repository.TransactionRepository
 import com.sulck.backend.domain.repository.UserRepository
 import com.sulck.backend.domain.repository.StreakRepository
+import com.sulck.backend.domain.repository.EmergencyContactRepository
+import com.sulck.backend.domain.repository.EmergencyUnlockPolicyRepository
+import com.sulck.backend.domain.repository.EmergencyUnlockRequestRepository
 import com.sulck.backend.domain.usecase.*
 import com.sulck.backend.infrastructure.repository.ExposedGoalRepository
 import com.sulck.backend.infrastructure.repository.ExposedTransactionRepository
@@ -32,6 +35,9 @@ val module: Module = module {
     single<GoalRepository> { ExposedGoalRepository() }
     single<TransactionRepository> { ExposedTransactionRepository() }
     single<StreakRepository> { ExposedStreakRepository() }
+    single<EmergencyContactRepository> { com.sulck.backend.infrastructure.repository.ExposedEmergencyContactRepository() }
+    single<EmergencyUnlockPolicyRepository> { com.sulck.backend.infrastructure.repository.ExposedEmergencyUnlockPolicyRepository() }
+    single<EmergencyUnlockRequestRepository> { com.sulck.backend.infrastructure.repository.ExposedEmergencyUnlockRequestRepository() }
 
     // Services
     single<PaystackService> { PaystackServiceImpl(get()) }
@@ -50,4 +56,20 @@ val module: Module = module {
     single { GetStreakUseCase(get()) }
     single { UpdateStreakUseCase(get(), get()) }
     single { AdminUseCases(get(), get(), get()) }
+    single { EmergencyUnlockUseCases.CreateEmergencyContactUseCase(get()) }
+    single { EmergencyUnlockUseCases.GetEmergencyContactsUseCase(get()) }
+    single { EmergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase(get(), get()) }
+    single { EmergencyUnlockUseCases.ApproveEmergencyUnlockUseCase(get()) }
+    single { EmergencyUnlockUseCases.ApplyEmergencyUnlockUseCase(get(), get()) }
+    single { EmergencyUnlockUseCases.RejectEmergencyUnlockUseCase(get()) }
+    single { EmergencyUnlockUseCases.GetAllDevicesStatusUseCase(get(), get(), get()) }
+    single { EmergencyUnlockUseCases(
+        get(),
+        get(),
+        get(),
+        get(),
+        get(),
+        get(),
+        get()
+    ) }
 }

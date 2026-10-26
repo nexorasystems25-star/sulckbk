@@ -24,6 +24,7 @@ fun Routing.configureRoutes(
     transactionUseCases: TransactionUseCases,
     streakUseCases: StreakUseCases,
     adminUseCases: AdminUseCases,
+    emergencyUnlockUseCases: EmergencyUnlockUseCases,
     paystackService: PaystackService,
     paystackConfig: PaystackConfig,
     getUserUseCase: GetUserUseCase,
@@ -202,6 +203,201 @@ fun Routing.configureRoutes(
 
                 val stats = adminUseCases()
                 call.respond(stats)
+            }
+
+            get("/devices") {
+                val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
+                val userId = UUID.fromString(principal.name)
+                val user = getUserUseCase(userId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!user.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@get
+                }
+
+                val devices = emergencyUnlockUseCases.GetAllDevicesStatusUseCase()
+                val deviceStatusList = devices.map {
+                    DeviceStatus(
+                        userId = it.userId,
+                        userEmail = it.userEmail,
+                        userPhone = it.userPhone,
+                        lockLevel = it.lockLevel,
+                        missedDays = it.missedDays,
+                        currentStreak = it.currentStreak,
+                        status = it.status,
+                        isLocked = it.isLocked,
+                        isAppLocked = it.isAppLocked,
+                        isTempLocked = it.isTempLocked,
+                        isFullyLocked = it.isFullyLocked,
+                        lastDepositAt = it.lastDepositAt,
+                        lastMissedAt = it.lastMissedAt,
+                        lockoutUntil = it.lockoutUntil,
+                        tempLockTimestamp = it.tempLockTimestamp,
+                        appLockTimestamp = it.appLockTimestamp,
+                        lockedAssetSerial = it.lockedAssetSerial,
+                        goalProgress = it.goalProgress,
+                        goalTarget = it.goalTarget,
+                        goalRemaining = it.goalRemaining
+                    )
+                }
+                call.respond(DeviceStatusResponse(deviceStatusList))
+            }
+
+            post("/emergency-unlock") {
+                val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
+                val adminUserId = UUID.fromString(principal.name)
+                val adminUser = getUserUseCase(adminUserId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!adminUser.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@post
+                }
+
+                val input = call.receive<EmergencyUnlockInput>()
+                val request = emergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase(
+                    EmergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase.Input(
+                        userId = input.userId,
+                        policyId = input.policyId,
+                        requestedBy = adminUserId,
+                        fromLockLevel = input.fromLockLevel,
+                        toLockLevel = input.toLockLevel,
+                        reason = input.reason,
+                        durationHours = input.durationHours,
+                        contactId = input.contactId
+                    )
+                )
+
+                val summary = EmergencyUnlockRequestSummary(
+                    id = request.id,
+                    userId = request.userId,
+                    policyId = request.policyId,
+                    requestedBy = request.requestedBy,
+                    fromLockLevel = request.fromLockLevel,
+                    toLockLevel = request.toLockLevel,
+                    reason = request.reason,
+                    durationHours = request.durationHours,
+                    status = request.status.name,
+                    approvedBy = request.approvedBy,
+                    approvedAt = request.approvedAt,
+                    rejectedBy = request.rejectedBy,
+                    rejectedAt = request.rejectedAt,
+                    rejectionReason = request.rejectionReason,
+                    effectiveAt = request.effectiveAt,
+                    expiresAt = request.expiresAt,
+                    createdAt = request.createdAt
+                )
+                call.respond(EmergencyUnlockRequestResponse(summary))
+            }
+
+            post("/emergency-unlock/{requestId}/approve") {
+                val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
+                val adminUserId = UUID.fromString(principal.name)
+                val user = getUserUseCase(adminUserId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!user.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@post
+                }
+
+                val requestId = UUID.fromString(call.parameters["requestId"] ?: "")
+                val request = emergencyUnlockUseCases.ApproveEmergencyUnlockUseCase(requestId, adminUserId)
+
+                val summary = EmergencyUnlockRequestSummary(
+                    id = request.id,
+                    userId = request.userId,
+                    policyId = request.policyId,
+                    requestedBy = request.requestedBy,
+                    fromLockLevel = request.fromLockLevel,
+                    toLockLevel = request.toLockLevel,
+                    reason = request.reason,
+                    durationHours = request.durationHours,
+                    status = request.status.name,
+                    approvedBy = request.approvedBy,
+                    approvedAt = request.approvedAt,
+                    rejectedBy = request.rejectedBy,
+                    rejectedAt = request.rejectedAt,
+                    rejectionReason = request.rejectionReason,
+                    effectiveAt = request.effectiveAt,
+                    expiresAt = request.expiresAt,
+                    createdAt = request.createdAt
+                )
+                call.respond(EmergencyUnlockRequestResponse(summary))
+            }
+
+            post("/emergency-unlock/{requestId}/apply") {
+                val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
+                val adminUserId = UUID.fromString(principal.name)
+                val user = getUserUseCase(adminUserId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!user.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@post
+                }
+
+                val requestId = UUID.fromString(call.parameters["requestId"] ?: "")
+                val request = emergencyUnlockUseCases.ApplyEmergencyUnlockUseCase(requestId)
+
+                val summary = EmergencyUnlockRequestSummary(
+                    id = request.id,
+                    userId = request.userId,
+                    policyId = request.policyId,
+                    requestedBy = request.requestedBy,
+                    fromLockLevel = request.fromLockLevel,
+                    toLockLevel = request.toLockLevel,
+                    reason = request.reason,
+                    durationHours = request.durationHours,
+                    status = request.status.name,
+                    approvedBy = request.approvedBy,
+                    approvedAt = request.approvedAt,
+                    rejectedBy = request.rejectedBy,
+                    rejectedAt = request.rejectedAt,
+                    rejectionReason = request.rejectionReason,
+                    effectiveAt = request.effectiveAt,
+                    expiresAt = request.expiresAt,
+                    createdAt = request.createdAt
+                )
+                call.respond(EmergencyUnlockRequestResponse(summary))
+            }
+
+            post("/emergency-unlock/{requestId}/reject") {
+                val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
+                val adminUserId = UUID.fromString(principal.name)
+                val user = getUserUseCase(adminUserId)
+                    ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
+
+                if (!user.isAdmin) {
+                    call.respond(HttpStatusCode.Forbidden, ErrorResponse("Admin access required"))
+                    return@post
+                }
+
+                val requestId = UUID.fromString(call.parameters["requestId"] ?: "")
+                val input = call.receive<RejectUnlockInput>()
+                val request = emergencyUnlockUseCases.RejectEmergencyUnlockUseCase(requestId, adminUserId, input.reason)
+
+                val summary = EmergencyUnlockRequestSummary(
+                    id = request.id,
+                    userId = request.userId,
+                    policyId = request.policyId,
+                    requestedBy = request.requestedBy,
+                    fromLockLevel = request.fromLockLevel,
+                    toLockLevel = request.toLockLevel,
+                    reason = request.reason,
+                    durationHours = request.durationHours,
+                    status = request.status.name,
+                    approvedBy = request.approvedBy,
+                    approvedAt = request.approvedAt,
+                    rejectedBy = request.rejectedBy,
+                    rejectedAt = request.rejectedAt,
+                    rejectionReason = request.rejectionReason,
+                    effectiveAt = request.effectiveAt,
+                    expiresAt = request.expiresAt,
+                    createdAt = request.createdAt
+                )
+                call.respond(EmergencyUnlockRequestResponse(summary))
             }
         }
     }
