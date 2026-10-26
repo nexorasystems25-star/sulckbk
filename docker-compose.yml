@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sulck-postgres
+    environment:
+      POSTGRES_DB: sulck
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: sulck-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./SulckBackend/ktor-app
+      dockerfile: Dockerfile
+    container_name: sulck-backend
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/sulck
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - JWT_SECRET=your-super-secret-jwt-key-change-in-production-min-32-chars
+      - PAYSTACK_SECRET_KEY=sk_test_your_paystack_secret_key
+      - PAYSTACK_PUBLIC_KEY=pk_test_your_paystack_public_key
+      - PAYSTACK_WEBHOOK_SECRET=your_webhook_secret
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: ./SulckAdmin
+      dockerfile: Dockerfile
+    container_name: sulck-admin
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
