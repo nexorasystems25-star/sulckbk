@@ -46,25 +46,64 @@ class UpdateStreakUseCase @Inject constructor(
 
     private fun handleMissedDeposit(streak: Streak): Streak {
         val newMissedDays = streak.missedDays + 1
-        val newStatus = when {
-            newMissedDays >= 3 -> StreakStatus.LOCKED
-            newMissedDays >= 1 -> StreakStatus.AT_RISK
-            else -> streak.status
+        val now = Instant.now()
+        
+        // M-KOPA-style lock progression
+        val (newStatus, tempLockTimestamp, lockoutUntil, warningIssuedAt) = when {
+            newMissedDays >= 3 -> {
+                // Full lock after 3 missed days
+                Triple(
+                    StreakStatus.LOCKED,
+                    streak.tempLockTimestamp,
+                    now.plusSeconds(7 * 24 * 60 * 60L), // Lock for 7 days
+                    streak.warningIssuedAt
+                )
+            }
+            newMissedDays >= 2 -> {
+                // Temp lock after 2 missed days (24 hours)
+                Triple(
+                    StreakStatus.AT_RISK,
+                    now.plusSeconds(24 * 60 * 60L),
+                    null,
+                    streak.warningIssuedAt
+                )
+            }
+            newMissedDays >= 1 -> {
+                // Warning after 1 missed day
+                Triple(
+                    StreakStatus.AT_RISK,
+                    null,
+                    null,
+                    now
+                )
+            }
+            else -> Triple(streak.status, null, null, streak.warningIssuedAt)
         }
 
         val updatedStreak = streak.copy(
             missedDays = newMissedDays,
             status = newStatus,
-            lastMissedAt = Instant.now(),
-            updatedAt = Instant.now()
+            lastMissedAt = now,
+            tempLockTimestamp = tempLockTimestamp,
+            lockoutUntil = lockoutUntil,
+            warningIssuedAt = warningIssuedAt,
+            updatedAt = now
         )
 
         streakRepository.upsert(updatedStreak)
+        
+        val eventType = when {
+            newMissedDays >= 3 -> StreakEventType.STREAK_LOCKED
+            newMissedDays >= 2 -> StreakEventType.STREAK_PAUSED
+            else -> StreakEventType.DEPOSIT_MISSED
+        }
+        
         streakRepository.recordEvent(StreakEvent(
             userId = streak.userId,
-            eventType = StreakEventType.DEPOSIT_MISSED,
+            eventType = eventType,
             streakBefore = streak.currentStreak,
-            streakAfter = updatedStreak.currentStreak
+            streakAfter = updatedStreak.currentStreak,
+            metadata = "missedDays:$newMissedDays,status:$newStatus"
         ))
 
         return updatedStreak
@@ -79,6 +118,7 @@ class UpdateStreakUseCase @Inject constructor(
         val newLongestStreak = maxOf(streak.longestStreak, newStreakDays)
         val newStatus = if (streak.status == StreakStatus.LOCKED) StreakStatus.ACTIVE else streak.status
 
+        // Clear lock states on successful deposit (M-KOPA unlock behavior)
         val updatedStreak = streak.copy(
             currentStreak = newStreakDays,
             longestStreak = newLongestStreak,
@@ -86,10 +126,24 @@ class UpdateStreakUseCase @Inject constructor(
             status = newStatus,
             lastDepositAt = Instant.now(),
             lockoutUntil = null,
+            tempLockTimestamp = null,
+            warningIssuedAt = null,
             updatedAt = Instant.now()
         )
 
         streakRepository.upsert(updatedStreak)
+        
+        // Record unlock event if was locked
+        if (streak.isLocked || streak.isTempLocked) {
+            streakRepository.recordEvent(StreakEvent(
+                userId = streak.userId,
+                eventType = StreakEventType.STREAK_UNLOCKED,
+                streakBefore = streak.currentStreak,
+                streakAfter = newStreakDays,
+                metadata = "unlockedAfter:${streak.missedDays}missedDays"
+            ))
+        }
+        
         streakRepository.recordEvent(StreakEvent(
             userId = streak.userId,
             eventType = StreakEventType.DEPOSIT_MADE,

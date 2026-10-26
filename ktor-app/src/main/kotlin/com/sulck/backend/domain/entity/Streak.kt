@@ -15,14 +15,34 @@ data class Streak(
     val lastDepositAt: Instant? = null,
     val lastMissedAt: Instant? = null,
     val lockoutUntil: Instant? = null,
+    val tempLockTimestamp: Instant? = null, // M-KOPA-style temp lock timestamp
+    val warningIssuedAt: Instant? = null, // When AT_RISK warning was issued
     val createdAt: Instant = Instant.now(),
     val updatedAt: Instant = Instant.now()
 ) {
     val isLocked: Boolean
         get() = status == StreakStatus.LOCKED || lockoutUntil != null && lockoutUntil! > Instant.now()
 
+    val isTempLocked: Boolean
+        get() = tempLockTimestamp != null && tempLockTimestamp!! > Instant.now()
+
     val daysSinceLastDeposit: Long?
         get() = lastDepositAt?.let { java.time.Duration.between(it, Instant.now()).toDays() }
+
+    val consecutiveMissedDays: Int
+        get() = if (lastDepositAt != null) {
+            val daysSince = java.time.Duration.between(lastDepositAt!!, Instant.now()).toDays().toInt()
+            if (daysSince > 0) daysSince else 0
+        } else 0
+
+    val shouldTriggerWarning: Boolean
+        get() = consecutiveMissedDays >= 1 && warningIssuedAt == null
+
+    val shouldTriggerTempLock: Boolean
+        get() = consecutiveMissedDays >= 2 && tempLockTimestamp == null
+
+    val shouldTriggerFullLock: Boolean
+        get() = consecutiveMissedDays >= 3 && status != StreakStatus.LOCKED
 }
 
 enum class StreakStatus {
