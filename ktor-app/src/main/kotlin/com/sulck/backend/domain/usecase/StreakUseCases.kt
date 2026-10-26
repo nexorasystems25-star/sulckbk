@@ -4,6 +4,7 @@ import com.sulck.backend.domain.entity.Streak
 import com.sulck.backend.domain.entity.StreakEvent
 import com.sulck.backend.domain.entity.StreakEventType
 import com.sulck.backend.domain.entity.StreakStatus
+import com.sulck.backend.domain.entity.LockLevel
 import com.sulck.backend.domain.repository.StreakRepository
 import com.sulck.backend.domain.repository.TransactionRepository
 import java.time.Instant
@@ -48,45 +49,61 @@ class UpdateStreakUseCase @Inject constructor(
         val newMissedDays = streak.missedDays + 1
         val now = Instant.now()
         
-        // M-KOPA-style lock progression
-        val (newStatus, tempLockTimestamp, lockoutUntil, warningIssuedAt) = when {
+        // M-KOPA-style lock progression with granular lock levels
+        val newStatus: StreakStatus
+        val newLockLevel: LockLevel
+        val tempLockTimestamp: Instant?
+        val lockoutUntil: Instant?
+        val warningIssuedAt: Instant?
+        val appLockTimestamp: Instant?
+
+        when {
             newMissedDays >= 3 -> {
-                // Full lock after 3 missed days
-                Triple(
-                    StreakStatus.LOCKED,
-                    streak.tempLockTimestamp,
-                    now.plusSeconds(7 * 24 * 60 * 60L), // Lock for 7 days
-                    streak.warningIssuedAt
-                )
+                // Day 3: Full lock (phone completely locked)
+                newStatus = StreakStatus.LOCKED
+                newLockLevel = LockLevel.FULL_LOCK
+                tempLockTimestamp = streak.tempLockTimestamp
+                lockoutUntil = now.plusSeconds(7 * 24 * 60 * 60L) // Lock for 7 days
+                warningIssuedAt = streak.warningIssuedAt
+                appLockTimestamp = streak.appLockTimestamp
             }
             newMissedDays >= 2 -> {
-                // Temp lock after 2 missed days (24 hours)
-                Triple(
-                    StreakStatus.AT_RISK,
-                    now.plusSeconds(24 * 60 * 60L),
-                    null,
-                    streak.warningIssuedAt
-                )
+                // Day 2: Temp lock (phone temp locked, app accessible with unlock button)
+                newStatus = StreakStatus.AT_RISK
+                newLockLevel = LockLevel.TEMP_LOCK
+                tempLockTimestamp = now.plusSeconds(24 * 60 * 60L) // Temp lock for 24 hours
+                lockoutUntil = null
+                warningIssuedAt = streak.warningIssuedAt
+                appLockTimestamp = streak.appLockTimestamp
             }
             newMissedDays >= 1 -> {
-                // Warning after 1 missed day
-                Triple(
-                    StreakStatus.AT_RISK,
-                    null,
-                    null,
-                    now
-                )
+                // Day 1: App lock (continuous screen lock with warning)
+                newStatus = StreakStatus.AT_RISK
+                newLockLevel = LockLevel.APP_LOCK
+                tempLockTimestamp = null
+                lockoutUntil = null
+                warningIssuedAt = now
+                appLockTimestamp = now.plusSeconds(24 * 60 * 60L) // App lock for 24 hours
             }
-            else -> Triple(streak.status, null, null, streak.warningIssuedAt)
+            else -> {
+                newStatus = streak.status
+                newLockLevel = LockLevel.NONE
+                tempLockTimestamp = null
+                lockoutUntil = null
+                warningIssuedAt = streak.warningIssuedAt
+                appLockTimestamp = streak.appLockTimestamp
+            }
         }
 
         val updatedStreak = streak.copy(
             missedDays = newMissedDays,
             status = newStatus,
+            lockLevel = newLockLevel,
             lastMissedAt = now,
             tempLockTimestamp = tempLockTimestamp,
             lockoutUntil = lockoutUntil,
             warningIssuedAt = warningIssuedAt,
+            appLockTimestamp = appLockTimestamp,
             updatedAt = now
         )
 
@@ -95,6 +112,7 @@ class UpdateStreakUseCase @Inject constructor(
         val eventType = when {
             newMissedDays >= 3 -> StreakEventType.STREAK_LOCKED
             newMissedDays >= 2 -> StreakEventType.STREAK_PAUSED
+            newMissedDays >= 1 -> StreakEventType.DEPOSIT_MISSED
             else -> StreakEventType.DEPOSIT_MISSED
         }
         
@@ -103,7 +121,7 @@ class UpdateStreakUseCase @Inject constructor(
             eventType = eventType,
             streakBefore = streak.currentStreak,
             streakAfter = updatedStreak.currentStreak,
-            metadata = "missedDays:$newMissedDays,status:$newStatus"
+            metadata = "missedDays:$newMissedDays,lockLevel:$newLockLevel,status:$newStatus"
         ))
 
         return updatedStreak
@@ -118,29 +136,31 @@ class UpdateStreakUseCase @Inject constructor(
         val newLongestStreak = maxOf(streak.longestStreak, newStreakDays)
         val newStatus = if (streak.status == StreakStatus.LOCKED) StreakStatus.ACTIVE else streak.status
 
-        // Clear lock states on successful deposit (M-KOPA unlock behavior)
+        // Clear all lock states on successful deposit (M-KOPA unlock behavior)
         val updatedStreak = streak.copy(
             currentStreak = newStreakDays,
             longestStreak = newLongestStreak,
             missedDays = 0,
             status = newStatus,
+            lockLevel = LockLevel.NONE,
             lastDepositAt = Instant.now(),
             lockoutUntil = null,
             tempLockTimestamp = null,
             warningIssuedAt = null,
+            appLockTimestamp = null,
             updatedAt = Instant.now()
         )
 
         streakRepository.upsert(updatedStreak)
         
         // Record unlock event if was locked
-        if (streak.isLocked || streak.isTempLocked) {
+        if (streak.isLocked || streak.isTempLocked || streak.isAppLocked) {
             streakRepository.recordEvent(StreakEvent(
                 userId = streak.userId,
                 eventType = StreakEventType.STREAK_UNLOCKED,
                 streakBefore = streak.currentStreak,
                 streakAfter = newStreakDays,
-                metadata = "unlockedAfter:${streak.missedDays}missedDays"
+                metadata = "unlockedAfter:${streak.missedDays}missedDays,from:${streak.lockLevel}"
             ))
         }
         

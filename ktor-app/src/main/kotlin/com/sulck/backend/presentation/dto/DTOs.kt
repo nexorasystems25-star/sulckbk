@@ -177,10 +177,17 @@ data class StreakSummary(
     val longestStreak: Int,
     val missedDays: Int,
     val status: String,
+    val lockLevel: String,
     val lastDepositAt: java.time.Instant?,
     val lastMissedAt: java.time.Instant?,
     val lockoutUntil: java.time.Instant?,
-    val isLocked: Boolean
+    val tempLockTimestamp: java.time.Instant?,
+    val appLockTimestamp: java.time.Instant?,
+    val warningIssuedAt: java.time.Instant?,
+    val isLocked: Boolean,
+    val isAppLocked: Boolean,
+    val isTempLocked: Boolean,
+    val isFullyLocked: Boolean
 )
 
 @Serializable

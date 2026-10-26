@@ -12,19 +12,27 @@ data class Streak(
     val longestStreak: Int = 0,
     val missedDays: Int = 0,
     val status: StreakStatus = StreakStatus.ACTIVE,
+    val lockLevel: LockLevel = LockLevel.NONE,
     val lastDepositAt: Instant? = null,
     val lastMissedAt: Instant? = null,
     val lockoutUntil: Instant? = null,
     val tempLockTimestamp: Instant? = null, // M-KOPA-style temp lock timestamp
     val warningIssuedAt: Instant? = null, // When AT_RISK warning was issued
+    val appLockTimestamp: Instant? = null, // Day 1 app lock timestamp
     val createdAt: Instant = Instant.now(),
     val updatedAt: Instant = Instant.now()
 ) {
     val isLocked: Boolean
-        get() = status == StreakStatus.LOCKED || lockoutUntil != null && lockoutUntil! > Instant.now()
+        get() = lockLevel != LockLevel.NONE || status == StreakStatus.LOCKED || lockoutUntil != null && lockoutUntil! > Instant.now()
 
     val isTempLocked: Boolean
-        get() = tempLockTimestamp != null && tempLockTimestamp!! > Instant.now()
+        get() = lockLevel == LockLevel.TEMP_LOCK || (tempLockTimestamp != null && tempLockTimestamp!! > Instant.now())
+
+    val isAppLocked: Boolean
+        get() = lockLevel == LockLevel.APP_LOCK || (appLockTimestamp != null && appLockTimestamp!! > Instant.now())
+
+    val isFullyLocked: Boolean
+        get() = lockLevel == LockLevel.FULL_LOCK || status == StreakStatus.LOCKED
 
     val daysSinceLastDeposit: Long?
         get() = lastDepositAt?.let { java.time.Duration.between(it, Instant.now()).toDays() }
@@ -35,18 +43,25 @@ data class Streak(
             if (daysSince > 0) daysSince else 0
         } else 0
 
-    val shouldTriggerWarning: Boolean
-        get() = consecutiveMissedDays >= 1 && warningIssuedAt == null
+    val shouldTriggerAppLock: Boolean
+        get() = consecutiveMissedDays >= 1 && lockLevel == LockLevel.NONE
 
     val shouldTriggerTempLock: Boolean
-        get() = consecutiveMissedDays >= 2 && tempLockTimestamp == null
+        get() = consecutiveMissedDays >= 2 && lockLevel == LockLevel.APP_LOCK
 
     val shouldTriggerFullLock: Boolean
-        get() = consecutiveMissedDays >= 3 && status != StreakStatus.LOCKED
+        get() = consecutiveMissedDays >= 3 && lockLevel != LockLevel.FULL_LOCK
 }
 
 enum class StreakStatus {
     ACTIVE, PAUSED, AT_RISK, LOCKED
+}
+
+enum class LockLevel {
+    NONE,           // No lock
+    APP_LOCK,       // Day 1: App-level screen lock with warning
+    TEMP_LOCK,      // Day 2: Phone temp lock, app accessible with unlock button
+    FULL_LOCK       // Day 3: Full phone lock
 }
 
 @Serializable

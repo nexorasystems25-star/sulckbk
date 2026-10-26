@@ -160,7 +160,28 @@ fun Routing.configureRoutes(
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
                 val userId = UUID.fromString(principal.name)
                 val streak = streakUseCases.GetStreakUseCase(userId)
-                call.respond(StreakResponse(streak))
+                val streakSummary = streak?.let {
+                    StreakSummary(
+                        id = it.id,
+                        userId = it.userId,
+                        currentStreak = it.currentStreak,
+                        longestStreak = it.longestStreak,
+                        missedDays = it.missedDays,
+                        status = it.status.name,
+                        lockLevel = it.lockLevel.name,
+                        lastDepositAt = it.lastDepositAt,
+                        lastMissedAt = it.lastMissedAt,
+                        lockoutUntil = it.lockoutUntil,
+                        tempLockTimestamp = it.tempLockTimestamp,
+                        appLockTimestamp = it.appLockTimestamp,
+                        warningIssuedAt = it.warningIssuedAt,
+                        isLocked = it.isLocked,
+                        isAppLocked = it.isAppLocked,
+                        isTempLocked = it.isTempLocked,
+                        isFullyLocked = it.isFullyLocked
+                    )
+                }
+                call.respond(StreakResponse(streakSummary))
             }
         }
     }
