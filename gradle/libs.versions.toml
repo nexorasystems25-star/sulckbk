@@ -1,0 +1,66 @@
+[versions]
+agp = "8.4.0"
+kotlin = "1.9.20"
+ksp = "1.9.20-1.0.14"
+compose = "2024.04.00"
+hilt = "2.48"
+room = "2.6.1"
+protobuf = "3.24.4"
+retrofit = "2.11.0"
+gson = "2.10.1"
+okhttp = "4.12.0"
+coroutines = "1.7.3"
+serialization = "1.6.1"
+junit = "4.13.2"
+espresso = "3.5.1"
+work = "2.9.0"
+security_crypto = "1.1.0-alpha06"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.12.0" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.7.0" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.2" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2024.04.00" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.1" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version = "1.6.1" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version = "1.6.1" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version = "1.6.1" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version = "1.6.1" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.6" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version = "2.6.1" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version = "2.6.1" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version = "2.6.1" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
+androidx-work-multiprocess = { group = "androidx.work", name = "work-multiprocess", version.ref = "work" }
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "security_crypto" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version = "2.48" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version = "2.48" }
+hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version = "2.48" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version = "2.11.0" }
+gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version = "4.12.0" }
+
+protobuf-java = { group = "com.google.protobuf", name = "protobuf-java", version = "3.24.4" }
+protobuf-kotlin = { group = "com.google.protobuf", name = "protobuf-kotlin", version = "3.24.4" }
+protobuf-gradle = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version = "0.9.4" }
+
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version = "1.7.3" }
+kotlinx-coroutines-play = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version = "1.7.3" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.1" }
+kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version = "1.6.1" }
+
+junit = { group = "junit", name = "junit", version = "4.13.2" }
+
+[plugins]
+android-application = { id = "com.android.application", version = "8.4.0" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }
+ksp = { id = "com.google.devtools.ksp", version = "1.9.20-1.0.14" }
+hilt = { id = "com.google.dagger.hilt.android", version = "2.48" }
+room = { id = "androidx.room", version = "2.6.1" }
+protobuf = { id = "com.google.protobuf", version = "0.9.4" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version = "1.9.22" }
