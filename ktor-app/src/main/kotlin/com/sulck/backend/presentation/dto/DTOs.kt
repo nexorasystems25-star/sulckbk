@@ -1,7 +1,22 @@
 package com.sulck.backend.presentation.dto
 
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializableComposition
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
 import java.util.UUID
+import java.time.Instant
+
+// UUID and Instant serializers using kotlinx-serialization built-in
+val UUID_serializer: KSerializer<UUID> = kotlinx.serialization.serializers.UUIDSerializer
+val Instant_serializer: KSerializer<Instant> = kotlinx.serialization.serializers.InstantSerializer
+
+// Helper for serializing Lists of serializable types
+fun <T : Serializable> listSerializer(of: KSerializer<T>): KSerializer<List<T>> {
+    return kotlinx.serialization.serializers.ListSerializer(of)
+}
 
 @Serializable
 sealed class AuthRequest {
@@ -55,8 +70,8 @@ data class UserSummary(
     val fullName: String,
     val isActive: Boolean,
     val isVerified: Boolean,
-    val createdAt: java.time.Instant
-)
+    val createdAt: Instant
+) : Serializable // explicit to ensure compatibility
 
 @Serializable
 sealed class GoalRequest {
@@ -113,8 +128,8 @@ data class GoalDetail(
     val currency: String,
     val dailyCommitment: Long,
     val cadenceDays: Int,
-    val startDate: java.time.Instant,
-    val targetDate: java.time.Instant,
+    val startDate: Instant,
+    val targetDate: Instant,
     val lockedAssetSerial: String?,
     val status: String,
     val currentProgress: Long,
@@ -160,8 +175,8 @@ data class TransactionSummary(
     val provider: String?,
     val providerRef: String?,
     val description: String?,
-    val createdAt: java.time.Instant,
-    val completedAt: java.time.Instant?
+    val createdAt: Instant,
+    val completedAt: Instant?
 )
 
 @Serializable
@@ -178,12 +193,12 @@ data class StreakSummary(
     val missedDays: Int,
     val status: String,
     val lockLevel: String,
-    val lastDepositAt: java.time.Instant?,
-    val lastMissedAt: java.time.Instant?,
-    val lockoutUntil: java.time.Instant?,
-    val tempLockTimestamp: java.time.Instant?,
-    val appLockTimestamp: java.time.Instant?,
-    val warningIssuedAt: java.time.Instant?,
+    val lastDepositAt: Instant?,
+    val lastMissedAt: Instant?,
+    val lockoutUntil: Instant?,
+    val tempLockTimestamp: Instant?,
+    val appLockTimestamp: Instant?,
+    val warningIssuedAt: Instant?,
     val isLocked: Boolean,
     val isAppLocked: Boolean,
     val isTempLocked: Boolean,
@@ -208,11 +223,11 @@ data class DeviceStatus(
     val isAppLocked: Boolean,
     val isTempLocked: Boolean,
     val isFullyLocked: Boolean,
-    val lastDepositAt: java.time.Instant?,
-    val lastMissedAt: java.time.Instant?,
-    val lockoutUntil: java.time.Instant?,
-    val tempLockTimestamp: java.time.Instant?,
-    val appLockTimestamp: java.time.Instant?,
+    val lastDepositAt: Instant?,
+    val lastMissedAt: Instant?,
+    val lockoutUntil: Instant?,
+    val tempLockTimestamp: Instant?,
+    val appLockTimestamp: Instant?,
     val lockedAssetSerial: String?,
     val goalProgress: Double?,
     val goalTarget: Long?,
@@ -236,13 +251,13 @@ data class EmergencyUnlockRequestSummary(
     val durationHours: Int?,
     val status: String,
     val approvedBy: UUID?,
-    val approvedAt: java.time.Instant?,
+    val approvedAt: Instant?,
     val rejectedBy: UUID?,
-    val rejectedAt: java.time.Instant?,
+    val rejectedAt: Instant?,
     val rejectionReason: String?,
-    val effectiveAt: java.time.Instant?,
-    val expiresAt: java.time.Instant?,
-    val createdAt: java.time.Instant
+    val effectiveAt: Instant?,
+    val expiresAt: Instant?,
+    val createdAt: Instant
 )
 
 @Serializable
@@ -260,8 +275,8 @@ data class EmergencyContactSummary(
     val priority: String,
     val reason: String?,
     val notes: String?,
-    val resolvedAt: java.time.Instant?,
-    val createdAt: java.time.Instant
+    val resolvedAt: Instant?,
+    val createdAt: Instant
 )
 
 @Serializable
@@ -285,3 +300,44 @@ data class EmergencyUnlockInput(
 data class RejectUnlockInput(
     val reason: String
 )
+
+// Paystack webhook DTOs
+@Serializable
+data class PaystackWebhookData(
+    val event: String,
+    val data: PaystackWebhookData.Data
+) {
+    @Serializable
+    data class Data(
+        val id: Long,
+        val domain: String,
+        val status: String,
+        val reference: String,
+        val amount: Long,
+        val currency: String,
+        val channel: String,
+        val paid_at: String,
+        val created_at: String,
+        val customer: Customer,
+        val authorization: Authorization
+    ) {
+        @Serializable
+        data class Customer(
+            val id: Long,
+            val email: String,
+            val phone: String?
+        )
+        @Serializable
+        data class Authorization(
+            val authorization_code: String,
+            val card_type: String,
+            val last4: String,
+            val exp_month: String,
+            val exp_year: String,
+            val bin: String,
+            val bank: String,
+            val brand: String,
+            val reusable: Boolean
+        )
+    }
+}
