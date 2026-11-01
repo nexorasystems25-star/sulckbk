@@ -12,11 +12,13 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.auth.jwt.*
 import io.ktor.http.*
 import io.ktor.server.request.*
-import java.util.UUID
+import kotlinx.serialization.json.Json
 import kotlinx.coroutines.*
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import java.util.Base64
+import java.util.UUID
+import java.time.Instant
 
 fun Routing.configureRoutes(
     authUseCases: AuthUseCases,
@@ -217,7 +219,7 @@ fun Routing.configureRoutes(
                 }
 
                 val devices = emergencyUnlockUseCases.GetAllDevicesStatusUseCase()
-                val deviceStatusList = devices.map {
+                val deviceStatusList = devices.map { it ->
                     DeviceStatus(
                         userId = it.userId,
                         userEmail = it.userEmail,
@@ -416,7 +418,7 @@ fun Routing.configureRoutes(
         }
 
         if (event == "charge.success" || event == "charge.failed") {
-            val data = kotlinx.serialization.json.Json.decodeFromString<PaystackWebhookData>(payload)
+            val data = Json.decodeFromString<PaystackWebhookData>(payload)
             val result = transactionUseCases.ProcessWebhookUseCase.invoke(
                 TransactionUseCases.ProcessWebhookUseCase.Input(
                     reference = data.data.reference,
@@ -443,45 +445,5 @@ private fun verifyPaystackSignature(payload: String, signature: String, secret: 
         expectedSignature == signature
     } catch (e: Exception) {
         false
-    }
-}
-
-@Serializable
-data class PaystackWebhookData(
-    val event: String,
-    val data: PaystackWebhookData.Data
-) {
-    @Serializable
-    data class Data(
-        val id: Long,
-        val domain: String,
-        val status: String,
-        val reference: String,
-        val amount: Long,
-        val currency: String,
-        val channel: String,
-        val paid_at: String,
-        val created_at: String,
-        val customer: Customer,
-        val authorization: Authorization
-    ) {
-        @Serializable
-        data class Customer(
-            val id: Long,
-            val email: String,
-            val phone: String?
-        )
-        @Serializable
-        data class Authorization(
-            val authorization_code: String,
-            val card_type: String,
-            val last4: String,
-            val exp_month: String,
-            val exp_year: String,
-            val bin: String,
-            val bank: String,
-            val brand: String,
-            val reusable: Boolean
-        )
     }
 }
