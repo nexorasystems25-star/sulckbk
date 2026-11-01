@@ -9,12 +9,16 @@ import java.util.UUID
 import java.time.Instant
 
 // UUID and Instant serializers using kotlinx-serialization built-in
-val UUID_serializer: KSerializer<UUID> = kotlinx.serialization.serializers.UUIDSerializer
-val Instant_serializer: KSerializer<Instant> = kotlinx.serialization.serializers.InstantSerializer
+import kotlinx.serialization.serializers.UUIDSerializer
+import kotlinx.serialization.serializers.InstantSerializer
+import kotlinx.serialization.serializers.ListSerializer
+
+val UUID_serializer: KSerializer<UUID> = UUIDSerializer
+val Instant_serializer: KSerializer<Instant> = InstantSerializer
 
 // Helper for serializing Lists of serializable types
 fun <T : Serializable> listSerializer(of: KSerializer<T>): KSerializer<List<T>> {
-    return kotlinx.serialization.serializers.ListSerializer(of)
+    return ListSerializer(of)
 }
 
 @Serializable
