@@ -16,6 +16,9 @@ import kotlinx.serialization.json.Json
 import kotlinx.coroutines.*
 import java.util.UUID
 import java.time.Instant
+import javax.crypto.Mac
+import javax.crypto.spec.SecretKeySpec
+import java.util.Base64
 
 fun Routing.configureRoutes(
     authUseCases: AuthUseCases,
@@ -65,7 +68,8 @@ fun Routing.configureRoutes(
         authenticate("auth-jwt") {
             get("/me") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val userId = UUID.fromString(principal.subject)
+                val userId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(userId)
                 user?.let { call.respond(AuthResponse.Me(it)) }
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
@@ -79,7 +83,8 @@ fun Routing.configureRoutes(
             post {
                 val request = call.receive<GoalRequest.Create>()
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val userId = UUID.fromString(principal.subject)
+                val userId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
 
                 val output = createGoalUseCase(
                     GoalUseCases.CreateGoalUseCase.Input(
@@ -98,7 +103,8 @@ fun Routing.configureRoutes(
 
             get {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val userId = UUID.fromString(principal.subject)
+                val userId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val activeOnly = call.request.queryParameters["activeOnly"]?.toBoolean() ?: true
                 val goals = listGoalsUseCase(userId, activeOnly)
                 call.respond(GoalResponse.List(goals))
@@ -107,7 +113,8 @@ fun Routing.configureRoutes(
             route("/{goalId}") {
                 get {
                     val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                    val userId = UUID.fromString(principal.subject)
+                    val userId = principal?.subject?.let { UUID.fromString(it) }
+                        ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                     val goalId = UUID.fromString(call.parameters["goalId"]!!)
                     val goal = goalUseCases.GetGoalUseCase(goalId)
                         ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("Goal not found"))
@@ -127,7 +134,8 @@ fun Routing.configureRoutes(
         post("/deposit") {
             val request = call.receive<TransactionRequest.Deposit>()
             val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-            val userId = UUID.fromString(principal.subject)
+            val userId = principal?.subject?.let { UUID.fromString(it) }
+                ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
 
             val output = transactionUseCases.DepositUseCase.invoke(
                 TransactionUseCases.DepositUseCase.Input(
@@ -143,7 +151,8 @@ fun Routing.configureRoutes(
 
         get {
             val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-            val userId = UUID.fromString(principal.subject)
+            val userId = principal?.subject?.let { UUID.fromString(it) }
+                ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
             val limit = call.request.queryParameters["limit"]?.toInt() ?: 50
             val offset = call.request.queryParameters["offset"]?.toInt() ?: 0
             val transactions = getTransactionHistoryUseCase(userId, limit, offset)
@@ -155,7 +164,8 @@ fun Routing.configureRoutes(
     route("/streak") {
         get {
             val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-            val userId = UUID.fromString(principal.subject)
+            val userId = principal?.subject?.let { UUID.fromString(it) }
+                ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
             val streak = streakUseCases.GetStreakUseCase(userId)
             val streakSummary = streak?.let {
                 StreakSummary(
@@ -187,7 +197,8 @@ fun Routing.configureRoutes(
         route("/admin") {
             get("/stats") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val userId = UUID.fromString(principal.subject)
+                val userId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(userId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
@@ -202,7 +213,8 @@ fun Routing.configureRoutes(
 
             get("/devices") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val userId = UUID.fromString(principal.subject)
+                val userId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(userId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
@@ -241,7 +253,8 @@ fun Routing.configureRoutes(
 
             post("/emergency-unlock") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val adminUserId = UUID.fromString(principal.subject)
+                val adminUserId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val adminUser = getUserUseCase(adminUserId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
@@ -288,7 +301,8 @@ fun Routing.configureRoutes(
 
             post("/emergency-unlock/{requestId}/approve") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val adminUserId = UUID.fromString(principal.subject)
+                val adminUserId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(adminUserId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
@@ -324,7 +338,8 @@ fun Routing.configureRoutes(
 
             post("/emergency-unlock/{requestId}/apply") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val adminUserId = UUID.fromString(principal.subject)
+                val adminUserId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(adminUserId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
@@ -360,7 +375,8 @@ fun Routing.configureRoutes(
 
             post("/emergency-unlock/{requestId}/reject") {
                 val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
-                val adminUserId = UUID.fromString(principal.subject)
+                val adminUserId = principal?.subject?.let { UUID.fromString(it) }
+                    ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                 val user = getUserUseCase(adminUserId)
                     ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("User not found"))
 
