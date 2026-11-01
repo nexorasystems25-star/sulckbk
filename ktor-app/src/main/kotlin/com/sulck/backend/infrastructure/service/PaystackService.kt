@@ -154,7 +154,7 @@ class PaystackServiceImpl @Inject constructor(
         )
 
         val response = client.post<InitializeResponse>("/transaction/initialize") {
-            setBody(request)
+            body = request
         }
 
         return if (response.status && response.data != null) {
