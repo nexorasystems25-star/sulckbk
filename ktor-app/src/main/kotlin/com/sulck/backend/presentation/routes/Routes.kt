@@ -265,7 +265,7 @@ fun Routing.configureRoutes(
 
                 val input = call.receive<EmergencyUnlockInput>()
                 val request = emergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase(
-                    EmergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase.Input(
+                    emergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase.Input(
                         userId = input.userId,
                         policyId = input.policyId,
                         requestedBy = adminUserId,
