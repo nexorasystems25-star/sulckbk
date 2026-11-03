@@ -15,19 +15,15 @@ import com.sulck.backend.infrastructure.service.PaystackService
 import com.sulck.backend.presentation.routes.configureRoutes
 import org.jetbrains.koin.core.component.KoinComponent
 import org.jetbrains.koin.core.inject
+import org.jetbrains.koin.ktor.koin
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.*
 import io.ktor.server.auth.jwt.*
-import io.ktor.server.cors.*
-import io.ktor.server.logging.*
-import io.ktor.server.netty.*
-import io.ktor.server.statuspages.*
+import io.ktor.server.plugins.cors.*
 import io.ktor.server.plugins.calllogging.*
 import io.ktor.server.plugins.contentnegotiation.*
-import io.ktor.server.plugins.cors.*
 import io.ktor.server.plugins.statuspages.*
-import io.ktor.server.serialization.kotlinx.json.*
-import io.ktor.server.application.*
+import io.ktor.server.netty.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
@@ -41,7 +37,6 @@ import org.slf4j.LoggerFactory
 import org.flywaydb.core.Flyway
 import org.jetbrains.koin.core.context.startKoin
 import org.jetbrains.koin.core.context.stopKoin
-import org.jetbrains.koin.ktor.koin
 
 fun main() {
     val logger = LoggerFactory.getLogger("SulckBackend")
@@ -88,9 +83,6 @@ fun Application.configureApplication() {
         exception<Throwable> { cause ->
             call.respondText("Internal Server Error: ${cause.message}", status = io.ktor.http.HttpStatusCode.InternalServerError)
         }
-    }
-    install(CallLogging) {
-        level = io.ktor.util.logging.Level.INFO
     }
     install(CORS) {
         anyHost()
