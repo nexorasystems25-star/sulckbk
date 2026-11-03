@@ -21,9 +21,9 @@ class AdminUseCases @Inject constructor(
     operator fun invoke(): Stats {
         // TODO: Implement actual queries
         return Stats(
-            totalUsers = 0,
-            activeGoals = 0,
-            totalDeposits = 0,
+            totalUsers = 0L,
+            activeGoals = 0L,
+            totalDeposits = 0L,
             totalVolume = 0L
         )
     }

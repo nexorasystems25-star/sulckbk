@@ -1,0 +1,1727 @@
+﻿Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :ktor-app:checkKotlinGradlePluginConfigurationErrors
+> Task :ktor-app:compileKotlin
+w: Argument -Xopt-in is deprecated. Please use -opt-in instead
+.\gradlew : e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:16:22 
+Unresolved reference: koin
+At line:1 char:1
++ .\gradlew :ktor-app:compileKotlin 2>&1 | Out-File -FilePath 'D:\Deskt ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (e: file:///D:/D...reference: koin:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:17:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:21:23 Unresolved 
+reference: cors
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:24:23 Unresolved 
+reference: statuspages
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:25:31 Unresolved 
+reference: calllogging
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:29:23 Unresolved 
+reference: serialization
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:42:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:43:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:44:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:50:5 Unresolved 
+reference: startKoin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:51:9 Unresolved 
+reference: modules
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:68:14 None of the 
+following functions can be called with the arguments supplied: 
+public final fun connect(getNewConnection: () -> Connection, databaseConfig: DatabaseConfig? = ..., manager: 
+(Database) -> TransactionManager = ...): Database defined in org.jetbrains.exposed.sql.Database.Companion
+public final fun connect(datasource: DataSource, setupConnection: (Connection) -> Unit = ..., databaseConfig: 
+DatabaseConfig? = ..., manager: (Database) -> TransactionManager = ...): Database defined in 
+org.jetbrains.exposed.sql.Database.Companion
+public final fun connect(url: String, driver: String = ..., user: String = ..., password: String = ..., 
+setupConnection: (Connection) -> Unit = ..., databaseConfig: DatabaseConfig? = ..., manager: (Database) -> 
+TransactionManager = ...): Database defined in org.jetbrains.exposed.sql.Database.Companion
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:68:59 No value 
+passed for parameter 'db'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:75:5 Unresolved 
+reference: embeddedServer
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:75:27 Unresolved 
+reference: configureApplication
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:79:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:79:13 Unresolved 
+reference: Koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:80:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:80:13 Unresolved 
+reference: CallLogging
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:80:28 Variable 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:88:30 Type 
+mismatch: inferred type is suspend (ApplicationCall) -> Unit but suspend (ApplicationCall, TypeVariable(T)) -> Unit 
+was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:88:32 Expected 2 
+parameters of types ApplicationCall, Nothing
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:89:13 Unresolved 
+reference. None of the following candidates is applicable because of receiver type mismatch: 
+public val PipelineContext<*, ApplicationCall>.call: ApplicationCall defined in io.ktor.server.application
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:89:62 Unresolved 
+reference: message
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:92:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:92:13 Unresolved 
+reference: CallLogging
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:93:9 Variable 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:9 Unresolved 
+reference: allowMethods
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:30 Unresolved 
+reference: HttpMethod
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:46 Unresolved 
+reference: HttpMethod
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:63 Unresolved 
+reference: HttpMethod
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:79 Unresolved 
+reference: HttpMethod
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:97:98 Unresolved 
+reference: HttpMethod
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:98:9 Function 
+invocation 'allowHeaders(...)' expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:98:9 No value 
+passed for parameter 'predicate'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:98:9 Variable 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:98:24 Type 
+mismatch: inferred type is Set<String> but Unit was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:99:9 Unresolved 
+reference: exposeHeaders
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:102:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:102:13 Unresolved 
+reference: Authentication
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:106:24 Cannot 
+infer a type for this parameter. Please specify it explicitly.
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:111:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:111:13 Unresolved 
+reference: CallLogging
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:112:5 Not enough 
+information to infer type variable B
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:112:13 Unresolved 
+reference: Logging
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:113:9 Variable 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:116:25 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:117:25 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:118:32 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:119:27 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:120:26 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:121:36 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:122:28 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:124:27 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:124:34 Unresolved 
+reference: GetUserUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:125:30 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:125:37 Unresolved 
+reference: CreateGoalUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:126:29 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:126:36 Unresolved 
+reference: ListGoalsUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:127:41 Unresolved 
+reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/Application.kt:129:5 Unresolved 
+reference. None of the following candidates is applicable because of receiver type mismatch: 
+public fun Routing.configureRoutes(authUseCases: AuthUseCases, goalUseCases: GoalUseCases, transactionUseCases: 
+TransactionUseCases, streakUseCases: StreakUseCases, adminUseCases: AdminUseCases, emergencyUnlockUseCases: 
+EmergencyUnlockUseCases, paystackService: PaystackService, paystackConfig: PaystackConfig, getUserUseCase: [Error 
+type: Unresolved type for GetUserUseCase], createGoalUseCase: [Error type: Unresolved type for CreateGoalUseCase], 
+listGoalsUseCase: [Error type: Unresolved type for ListGoalsUseCase], getTransactionHistoryUseCase: 
+GetTransactionHistoryUseCase): Unit defined in com.sulck.backend.presentation.routes in file Routes.kt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:5:27 Unresolved 
+reference: derivation
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:15:117 No value 
+passed for parameter 'evidence$1'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:15:117 No value 
+passed for parameter 'reader'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:24:113 No value 
+passed for parameter 'evidence$1'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:24:113 No value 
+passed for parameter 'reader'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:42:107 No value 
+passed for parameter 'evidence$1'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:42:107 No value 
+passed for parameter 'reader'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:53:117 No value 
+passed for parameter 'evidence$1'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/config/Config.kt:53:117 No value 
+passed for parameter 'reader'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:22:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:23:22 Unresolved 
+reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:25:22 Variable 
+'module' must be initialized
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:25:22 Unresolved 
+reference. None of the following candidates is applicable because of receiver type mismatch: 
+public operator fun <T, R> DeepRecursiveFunction<TypeVariable(T), TypeVariable(R)>.invoke(value: TypeVariable(T)): 
+TypeVariable(R) defined in kotlin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:27:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:28:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:29:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:30:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:31:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:34:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:35:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:36:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:37:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:38:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:39:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:40:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:43:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:43:51 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:46:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:46:14 Unresolved 
+reference: CreateUserUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:46:32 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:47:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:47:14 Unresolved 
+reference: GetUserUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:47:29 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:48:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:48:14 Unresolved 
+reference: AuthenticateUserUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:48:38 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:48:45 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:49:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:49:14 Unresolved 
+reference: RefreshTokenUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:49:34 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:49:41 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:50:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:50:14 Unresolved 
+reference: CreateGoalUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:50:32 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:50:39 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:51:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:51:14 Unresolved 
+reference: GetGoalUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:51:29 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:52:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:52:14 Unresolved 
+reference: ListGoalsUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:52:31 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:53:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:53:29 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:53:36 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:53:43 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:53:50 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:54:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:54:43 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:55:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:55:36 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:55:43 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:55:50 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:55:57 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:56:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:56:14 Unresolved 
+reference: GetStreakUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:56:31 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:57:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:57:14 Unresolved 
+reference: UpdateStreakUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:57:34 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:57:41 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:58:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:58:28 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:58:35 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:58:42 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:59:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:59:38 Unresolved 
+reference: CreateEmergencyContactUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:59:68 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:60:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:60:38 Unresolved 
+reference: GetEmergencyContactsUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:60:66 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:61:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:61:38 Unresolved 
+reference: CreateEmergencyUnlockRequestUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:61:74 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:61:81 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:62:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:62:38 Unresolved 
+reference: ApproveEmergencyUnlockUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:62:68 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:63:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:63:38 Unresolved 
+reference: ApplyEmergencyUnlockUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:63:66 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:63:73 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:64:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:64:38 Unresolved 
+reference: RejectEmergencyUnlockUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:64:67 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:65:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:65:38 Unresolved 
+reference: GetAllDevicesStatusUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:65:65 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:65:72 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:65:79 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:66:5 Unresolved 
+reference: single
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:67:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:68:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:69:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:70:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:71:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:72:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/di/Module.kt:73:9 Unresolved 
+reference: get
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+9:13 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+10:17 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+17:21 Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+18:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+19:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+39:13 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+48:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+49:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+54:13 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+55:17 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+56:20 Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+57:19 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+58:22 Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+64:21 Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+65:21 Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+66:21 Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type 
+or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+67:21 Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+69:22 Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+70:20 Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+71:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/EmergencyContact.kt:
+72:20 Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate 
+type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:9:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:10:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:17:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:18:21 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:23:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Goal.kt:24:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:26:117 
+Property getter or setter expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:9:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:10:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:16:24 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:17:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:18:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:19:28 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:20:26 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:21:27 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:22:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:23:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:26:105 
+Type mismatch: inferred type is Instant? but Boolean was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:69:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:70:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Streak.kt:75:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Transaction.kt:9:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Transaction.kt:10:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Transaction.kt:11:17 
+Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Transaction.kt:21:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/Transaction.kt:22:22 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/User.kt:9:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/User.kt:17:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/User.kt:18:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/entity/User.kt:19:22 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/repository/GoalRepository.k
+t:13:53 Unresolved reference: Status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/repository/TransactionRepos
+itory.kt:13:60 Unresolved reference: Status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/repository/TransactionRepos
+itory.kt:15:68 Unresolved reference: Type
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AdminUseCases.kt:7:14 
+Unresolved reference: inject
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AdminUseCases.kt:9:22 
+Unresolved reference: Inject
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AuthUseCases.kt:4:37 
+Unresolved reference: CreateUserUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AuthUseCases.kt:5:34 
+Unresolved reference: GetUserUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AuthUseCases.kt:6:43 
+Unresolved reference: AuthenticateUserUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/AuthUseCases.kt:7:39 
+Unresolved reference: RefreshTokenUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:15:14 Unresolved reference: inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:17:38 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:26:36 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:34:44 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:82:38 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:104:36 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:116:39 Suspend function 'findByUserId' should be called only from a coroutine or another suspend function
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:133:26 Suspend function 'upsert' should be called only from a coroutine or another suspend function
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:147:37 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/EmergencyUnlockUseC
+ases.kt:170:35 Unresolved reference: Inject
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/GoalUseCases.kt:4:37 
+Unresolved reference: CreateGoalUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/GoalUseCases.kt:5:34 
+Unresolved reference: GetGoalUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/GoalUseCases.kt:6:36 
+Unresolved reference: ListGoalsUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/StreakUseCases.kt:4
+:36 Unresolved reference: GetStreakUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/StreakUseCases.kt:5
+:39 Unresolved reference: UpdateStreakUseCase
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:10:23 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:11:40 Unresolved reference: TransactionRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:12:33 Unresolved reference: GoalRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:13:33 Unresolved reference: UserRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:14:34 Unresolved reference: PaystackService
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:17:37 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:18:40 Unresolved reference: TransactionRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:21:30 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:22:40 Unresolved reference: TransactionRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:23:33 Unresolved reference: GoalRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:24:33 Unresolved reference: UserRepository
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/domain/usecase/TransactionUseCases
+.kt:25:34 Unresolved reference: PaystackService
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:25:37 Unresolved reference: getOrNull
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:34:52 Type mismatch: inferred type is Users but IdTable<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:61:15 Conflicting declarations: public companion object : UUIDEntityClass<GoalEntity>, public companion object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:61:52 Type mismatch: inferred type is Goals but IdTable<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:98:5 Only one companion object is allowed per class
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:98:15 Conflicting declarations: public companion object : UUIDEntityClass<GoalEntity>, public companion object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:101:17 Val cannot be reassigned
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:101:22 Type mismatch: inferred type is UUID but EntityID<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:123:15 Conflicting declarations: public companion object, public companion object : 
+UUIDEntityClass<TransactionEntity>
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:123:59 Type mismatch: inferred type is Transactions but IdTable<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:156:5 Only one companion object is allowed per class
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:156:15 Conflicting declarations: public companion object, public companion object : 
+UUIDEntityClass<TransactionEntity>
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:159:17 Val cannot be reassigned
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:159:22 Type mismatch: inferred type is UUID but EntityID<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:179:15 Conflicting declarations: public companion object : UUIDEntityClass<StreakEntity>, public companion object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:179:54 Type mismatch: inferred type is Streaks but IdTable<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:214:5 Only one companion object is allowed per class
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:214:15 Conflicting declarations: public companion object : UUIDEntityClass<StreakEntity>, public companion object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:217:17 Val cannot be reassigned
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:217:22 Type mismatch: inferred type is UUID but EntityID<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:238:15 Conflicting declarations: public companion object : UUIDEntityClass<StreakEventEntity>, public companion 
+object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:238:59 Type mismatch: inferred type is StreakEvents but IdTable<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:257:5 Only one companion object is allowed per class
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:257:15 Conflicting declarations: public companion object : UUIDEntityClass<StreakEventEntity>, public companion 
+object
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:260:17 Val cannot be reassigned
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/Entities
+.kt:260:22 Type mismatch: inferred type is UUID but EntityID<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:11:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:14:71 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:15:71 Type mismatch: inferred type is List<Unit> but List<EmergencyContact> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:16:9 Type mismatch: inferred type is Unit but EmergencyContact was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:17:23 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:20:58 Type mismatch: inferred type is Unit but EmergencyContact? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:20:70 Type mismatch: inferred type is Unit but EmergencyContact? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:22:29 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:28:17 Unresolved reference: userId
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:29:17 Unresolved reference: contactType
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:30:17 Unresolved reference: contactValue
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:31:17 Unresolved reference: status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:32:17 Unresolved reference: priority
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:33:17 Unresolved reference: reason
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:34:17 Unresolved reference: notes
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:35:17 Unresolved reference: resolvedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:36:17 Unresolved reference: updatedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:39:11 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:44:29 Unresolved reference: delete
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:49:19 Type 'Column<UUID>' has no method 'getValue(EmergencyContactEntity, KProperty<*>)' 
+and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:49:19 Type 'Column<UUID>' has no method 'setValue(EmergencyContactEntity, KProperty<*>, 
+[Error type: Error delegation type for EmergencyContacts.userId])' and thus it cannot serve as a delegate for var 
+(read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:50:24 Type 'Column<String>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:50:24 Type 'Column<String>' has no method 'setValue(EmergencyContactEntity, KProperty<*>, 
+[Error type: Error delegation type for EmergencyContacts.contactType])' and thus it cannot serve as a delegate for var 
+(read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:51:25 Type 'Column<String>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:51:25 Type 'Column<String>' has no method 'setValue(EmergencyContactEntity, KProperty<*>, 
+[Error type: Error delegation type for EmergencyContacts.contactValue])' and thus it cannot serve as a delegate for 
+var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:52:19 Type 'Column<String>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:52:19 Type 'Column<String>' has no method 'setValue(EmergencyContactEntity, KProperty<*>, 
+[Error type: Error delegation type for EmergencyContacts.status])' and thus it cannot serve as a delegate for var 
+(read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:53:21 Type 'Column<String>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:53:21 Type 'Column<String>' has no method 'setValue(EmergencyContactEntity, KProperty<*>, 
+[Error type: Error delegation type for EmergencyContacts.priority])' and thus it cannot serve as a delegate for var 
+(read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:54:19 Type 'Column<String?>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:54:19 Type 'Column<String?>' has no method 'setValue(EmergencyContactEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyContacts.reason])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:55:18 Type 'Column<String?>' has no method 'getValue(EmergencyContactEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:55:18 Type 'Column<String?>' has no method 'setValue(EmergencyContactEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyContacts.notes])' and thus it cannot serve as a delegate 
+for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyContactRepository.kt:61:14 Unresolved reference: id
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:11:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:14:81 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:15:59 Type mismatch: inferred type is List<Unit> but List<EmergencyUnlockPolicy> was 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:16:9 Type mismatch: inferred type is Unit but EmergencyUnlockPolicy was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:16:54 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:19:63 Type mismatch: inferred type is Unit but EmergencyUnlockPolicy? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:19:75 Type mismatch: inferred type is Unit but EmergencyUnlockPolicy? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:21:29 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:24:62 Type mismatch: inferred type is List<Unit> but List<EmergencyUnlockPolicy> was 
+expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:25:9 Type mismatch: inferred type is Unit but EmergencyUnlockPolicy was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:26:23 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:32:17 Unresolved reference: name
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:33:17 Unresolved reference: description
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:34:17 Unresolved reference: maxUnlocksPerMonth
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:35:17 Unresolved reference: maxUnlockDurationHours
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:36:17 Unresolved reference: requiresApproval
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:37:17 Unresolved reference: allowedFromLockLevels
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:38:17 Unresolved reference: allowedToLockLevels
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:39:17 Unresolved reference: isActive
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:40:17 Unresolved reference: updatedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:43:11 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:48:29 Unresolved reference: delete
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:53:17 Type 'Column<String>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:53:17 Type 'Column<String>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.name])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:54:24 Type 'Column<String>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:54:24 Type 'Column<String>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.description])' and thus it cannot serve 
+as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:57:29 Type 'Column<Boolean>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:57:29 Type 'Column<Boolean>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.requiresApproval])' and thus it cannot 
+serve as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:58:34 Type 'Column<String>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:58:34 Type 'Column<String>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.allowedFromLockLevels])' and thus it 
+cannot serve as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:59:32 Type 'Column<String>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:59:32 Type 'Column<String>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.allowedToLockLevels])' and thus it cannot 
+serve as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:60:21 Type 'Column<Boolean>' has no method 'getValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:60:21 Type 'Column<Boolean>' has no method 'setValue(EmergencyUnlockPolicyEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockPolicies.isActive])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockPolicyRepository.kt:65:14 Unresolved reference: id
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:12:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:15:83 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:16:77 Type mismatch: inferred type is List<Unit> but List<EmergencyUnlockRequest> 
+was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:17:9 Type mismatch: inferred type is Unit but EmergencyUnlockRequest was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:18:23 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:21:64 Type mismatch: inferred type is Unit but EmergencyUnlockRequest? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:21:76 Type mismatch: inferred type is Unit but EmergencyUnlockRequest? was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:23:29 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:26:67 Type mismatch: inferred type is List<Unit> but List<EmergencyUnlockRequest> 
+was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:27:9 Type mismatch: inferred type is Unit but EmergencyUnlockRequest was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:28:23 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:34:17 Unresolved reference: userId
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:35:17 Unresolved reference: contactId
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:36:17 Unresolved reference: policyId
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:37:17 Unresolved reference: requestedBy
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:38:17 Unresolved reference: fromLockLevel
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:39:17 Unresolved reference: toLockLevel
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:40:17 Unresolved reference: reason
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:41:17 Unresolved reference: durationHours
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:42:17 Unresolved reference: status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:43:17 Unresolved reference: approvedBy
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:44:17 Unresolved reference: approvedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:45:17 Unresolved reference: rejectedBy
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:46:17 Unresolved reference: rejectedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:47:17 Unresolved reference: rejectionReason
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:48:17 Unresolved reference: effectiveAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:49:17 Unresolved reference: expiresAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:50:17 Unresolved reference: updatedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:53:11 Unresolved reference: toDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:56:18 Return type of 'updateStatus' is not a subtype of the return type of the 
+overridden member 'public abstract fun updateStatus(id: UUID, status: UnlockRequestStatus): Unit defined in 
+com.sulck.backend.domain.repository.EmergencyUnlockRequestRepository'
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:59:22 Unresolved reference: status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:60:17 Unresolved reference: updatedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:66:29 Unresolved reference: delete
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:71:19 Type 'Column<UUID>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:71:19 Type 'Column<UUID>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.userId])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:72:22 Type 'Column<UUID?>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:72:22 Type 'Column<UUID?>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.contactId])' and thus it cannot serve as 
+a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:73:21 Type 'Column<UUID>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:73:21 Type 'Column<UUID>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.policyId])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:74:24 Type 'Column<UUID>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:74:24 Type 'Column<UUID>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.requestedBy])' and thus it cannot serve 
+as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:75:26 Type 'Column<String>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:75:26 Type 'Column<String>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.fromLockLevel])' and thus it cannot serve 
+as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:76:24 Type 'Column<String>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:76:24 Type 'Column<String>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.toLockLevel])' and thus it cannot serve 
+as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:77:19 Type 'Column<String>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:77:19 Type 'Column<String>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.reason])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:79:19 Type 'Column<String>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:79:19 Type 'Column<String>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.status])' and thus it cannot serve as a 
+delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:80:23 Type 'Column<UUID?>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:80:23 Type 'Column<UUID?>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.approvedBy])' and thus it cannot serve as 
+a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:82:23 Type 'Column<UUID?>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:82:23 Type 'Column<UUID?>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.rejectedBy])' and thus it cannot serve as 
+a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:84:28 Type 'Column<String?>' has no method 'getValue(EmergencyUnlockRequestEntity, 
+KProperty<*>)' and thus it cannot serve as a delegate
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:84:28 Type 'Column<String?>' has no method 'setValue(EmergencyUnlockRequestEntity, 
+KProperty<*>, [Error type: Error delegation type for EmergencyUnlockRequests.rejectionReason])' and thus it cannot 
+serve as a delegate for var (read-write property)
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedE
+mergencyUnlockRequestRepository.kt:91:14 Unresolved reference: id
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:6:52 Unresolved reference: Entities
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:12:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:15:47 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:17:33 Unresolved reference: fromDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:26:9 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:26:24 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:27:32 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:28:20 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:32:9 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:33:13 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:33:41 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:35:28 Unresolved reference: Goals
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:36:16 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:40:33 None of the following functions can be called with the arguments supplied: 
+public final fun findById(id: UUID): GoalEntity? defined in 
+com.sulck.backend.infrastructure.repository.GoalEntity.Companion
+public open fun findById(id: EntityID<UUID>): GoalEntity? defined in 
+com.sulck.backend.infrastructure.repository.GoalEntity.Companion
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:40:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:41:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:42:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:43:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:44:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:45:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:46:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:47:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:48:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:49:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:50:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:51:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:52:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:53:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:58:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedG
+oalRepository.kt:65:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:8:52 Unresolved reference: Entities
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:9:52 Unresolved reference: Entities
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:15:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:18:51 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:20:9 Unresolved reference: Streaks
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:20:26 Unresolved reference: Streaks
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:24:35 Unresolved reference: fromDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:29:35 None of the following functions can be called with the arguments supplied: 
+public final fun findById(id: UUID): StreakEntity? defined in 
+com.sulck.backend.infrastructure.repository.StreakEntity.Companion
+public open fun findById(id: EntityID<UUID>): StreakEntity? defined in 
+com.sulck.backend.infrastructure.repository.StreakEntity.Companion
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:29:51 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:30:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:31:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:32:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:33:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:34:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:35:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:36:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:37:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:42:10 Unresolved reference: Streaks
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:42:27 Unresolved reference: Streaks
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:44:17 Unresolved reference: currentStreak
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:45:17 Unresolved reference: longestStreak
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:46:17 Unresolved reference: missedDays
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:47:17 Unresolved reference: status
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:48:17 Unresolved reference: lockLevel
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:49:17 Unresolved reference: lastDepositAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:50:17 Unresolved reference: lastMissedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:51:17 Unresolved reference: lockoutUntil
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:52:17 Unresolved reference: tempLockTimestamp
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:53:17 Unresolved reference: warningIssuedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:54:17 Unresolved reference: appLockTimestamp
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:55:17 Unresolved reference: updatedAt
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:57:29 Unresolved reference: fromDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:62:40 Unresolved reference: fromDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:67:9 Unresolved reference: StreakEvents
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:67:31 Unresolved reference: StreakEvents
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:68:32 Unresolved reference: StreakEvents
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:70:20 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:74:9 Unresolved reference: Streaks
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedS
+treakRepository.kt:74:35 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:7:52 Unresolved reference: Entities
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:13:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:16:61 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:18:40 Unresolved reference: fromDomain
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:27:9 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:27:31 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:28:32 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:31:20 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:35:9 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:35:31 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:36:32 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:37:20 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:41:10 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:41:32 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:45:40 None of the following functions can be called with the arguments supplied: 
+public final fun findById(id: UUID): TransactionEntity? defined in 
+com.sulck.backend.infrastructure.repository.TransactionEntity.Companion
+public open fun findById(id: EntityID<UUID>): TransactionEntity? defined in 
+com.sulck.backend.infrastructure.repository.TransactionEntity.Companion
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:45:56 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:46:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:47:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:48:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:49:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:50:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:51:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:52:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:53:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:54:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:55:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:60:56 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:69:9 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:69:31 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:73:9 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:74:13 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:74:48 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:74:79 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:75:19 Unresolved reference: it
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedT
+ransactionRepository.kt:75:22 Unresolved reference: Transactions
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:5:52 Unresolved reference: Entities
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:11:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:12:22 Unresolved reference: koin
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:15:47 Unresolved reference: KoinComponent
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:18:13 Val cannot be reassigned
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:18:18 Type mismatch: inferred type is UUID but EntityID<UUID> was expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:37:10 Unresolved reference: Users
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:37:25 Unresolved reference: Users
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:41:10 Unresolved reference: Users
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:41:25 Unresolved reference: Users
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:45:33 None of the following functions can be called with the arguments supplied: 
+public final fun findById(id: UUID): UserEntity? defined in 
+com.sulck.backend.infrastructure.repository.UserEntity.Companion
+public open fun findById(id: EntityID<UUID>): UserEntity? defined in 
+com.sulck.backend.infrastructure.repository.UserEntity.Companion
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:45:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:46:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:47:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:48:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:49:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:50:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:51:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:52:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:53:16 Variable expected
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:58:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:65:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/repository/ExposedU
+serRepository.kt:72:49 'return' is not allowed here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:11
+:34 Unresolved reference: uuid
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:12
+:34 Unresolved reference: varchar
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:13
+:34 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:14
+:34 Unresolved reference: long
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:15
+:34 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:16
+:34 Unresolved reference: bool
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:17
+:34 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:20
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:27
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:28
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:29
+:23 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:33
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:40
+:23 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:41
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:42
+:22 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:44
+:18 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:47
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:48
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:52
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:57
+:16 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:58
+:18 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:64
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:65
+:23 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:69
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:71
+:25 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:72
+:25 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:73
+:22 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:74
+:18 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:75
+:21 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:76
+:25 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:77
+:24 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:78
+:24 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:79
+:29 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:80
+:27 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:81
+:28 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:82
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:83
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:87
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:89
+:21 Unresolved reference: enumByName
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:90
+:24 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:91
+:23 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:93
+:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:97
+:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:10
+5:22 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:10
+6:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:10
+7:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:11
+1:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:11
+4:30 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:11
+5:34 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:12
+0:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:12
+1:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:12
+5:25 Unresolved reference: primaryKey
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:13
+3:25 Unresolved reference: int
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:13
+6:22 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:13
+8:22 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:14
+0:23 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:14
+1:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:14
+2:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/schema/Schema.kt:14
+3:21 Unresolved reference: datetime
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:8:31 Unresolved reference: contentnegotiation
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:22:51 Unresolved reference: PaystackVerificationResponse
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:27:28 Unresolved reference: Inject
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:32:17 Unresolved reference: ContentNegotiation
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:33:13 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public fun Configuration.json(json: Json = ..., contentType: ContentType = ...): Unit defined in 
+io.ktor.serialization.kotlinx.json
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:35:9 Unresolved reference: defaultRequest
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:36:13 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public fun HttpRequestBuilder.url(block: URLBuilder.() -> Unit): Unit defined in io.ktor.client.request
+public fun HttpRequestBuilder.url(url: Url): Unit defined in io.ktor.client.request
+public fun HttpRequestBuilder.url(url: URL): URLBuilder defined in io.ktor.client.request
+public fun HttpRequestBuilder.url(urlString: String): Unit defined in io.ktor.client.request
+public fun HttpRequestBuilder.url(scheme: String? = ..., host: String? = ..., port: Int? = ..., path: String? = ..., 
+block: URLBuilder.() -> Unit = ...): Unit defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:37:13 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public fun HttpMessageBuilder.header(key: String, value: Any?): Unit defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:38:13 Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public fun HttpMessageBuilder.header(key: String, value: Any?): Unit defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:156:31 None of the following functions can be called with the arguments supplied: 
+public suspend inline fun HttpClient.post(url: Url, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined 
+in io.ktor.client.request
+public suspend fun HttpClient.post(url: URL, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined in 
+io.ktor.client.request
+public suspend inline fun HttpClient.post(urlString: String, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse 
+defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:157:13 Unresolved reference: body
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:166:31 None of the following functions can be called with the arguments supplied: 
+public suspend inline fun HttpClient.get(builder: HttpRequestBuilder): HttpResponse defined in io.ktor.client.request
+public suspend inline fun HttpClient.get(block: HttpRequestBuilder.() -> Unit): HttpResponse defined in 
+io.ktor.client.request
+public suspend inline fun HttpClient.get(url: Url, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined 
+in io.ktor.client.request
+public suspend fun HttpClient.get(url: URL, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined in 
+io.ktor.client.request
+public suspend inline fun HttpClient.get(urlString: String, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse 
+defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/infrastructure/service/PaystackSer
+vice.kt:185:31 None of the following functions can be called with the arguments supplied: 
+public suspend inline fun HttpClient.get(builder: HttpRequestBuilder): HttpResponse defined in io.ktor.client.request
+public suspend inline fun HttpClient.get(block: HttpRequestBuilder.() -> Unit): HttpResponse defined in 
+io.ktor.client.request
+public suspend inline fun HttpClient.get(url: Url, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined 
+in io.ktor.client.request
+public suspend fun HttpClient.get(url: URL, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse defined in 
+io.ktor.client.request
+public suspend inline fun HttpClient.get(urlString: String, block: HttpRequestBuilder.() -> Unit = ...): HttpResponse 
+defined in io.ktor.client.request
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:12:30 
+Unresolved reference: serializers
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:13:30 
+Unresolved reference: serializers
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:14:30 
+Unresolved reference: serializers
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:16:42 
+Unresolved reference: UUIDSerializer
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:17:48 
+Unresolved reference: InstantSerializer
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:21:12 
+Unresolved reference: ListSerializer
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:70:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:76:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:77:5 
+This type is final, so it cannot be inherited from
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:77:5 
+This type has a constructor, and thus must be initialized here
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:103:32 
+Serializer has not been found for type '[Error type: Type for error type constructor (List)]<GoalSummary>'. To use 
+context serializer as fallback, explicitly annotate type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:103:36 
+No type arguments expected for class List
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:111:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:126:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:127:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:134:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:135:21 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:166:39 
+Serializer has not been found for type '[Error type: Type for error type constructor (List)]<TransactionSummary>'. To 
+use context serializer as fallback, explicitly annotate type or property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:166:43 
+No type arguments expected for class List
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:171:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:172:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:173:17 
+Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:181:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:182:22 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:192:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:193:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:199:24 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:200:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:201:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:202:28 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:203:27 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:204:26 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:218:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:229:24 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:230:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:231:23 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:232:28 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:233:27 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:247:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:248:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:249:19 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:250:22 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:256:21 
+Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:257:21 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:258:21 
+Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:259:21 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:261:22 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:262:20 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:263:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:273:13 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:274:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:281:21 
+Serializer has not been found for type 'Instant?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:282:20 
+Serializer has not been found for type 'Instant'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:293:17 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:294:19 
+Serializer has not been found for type 'UUID'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/dto/DTOs.kt:299:20 
+Serializer has not been found for type 'UUID?'. To use context serializer as fallback, explicitly annotate type or 
+property with @Contextual
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:32:21 
+Unresolved reference: GetUserUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:33:24 
+Unresolved reference: CreateGoalUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:34:23 
+Unresolved reference: ListGoalsUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:58:45 
+No value passed for parameter 'accessToken'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:58:45 
+No value passed for parameter 'refreshToken'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:64:47 
+No value passed for parameter 'refreshToken'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:74:34 
+Suspension functions can be called only within coroutine body
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:74:58 
+Type mismatch: inferred type is Unit but UserSummary was expected
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:91:33 
+Unresolved reference: request
+
+> Task :ktor-app:compileKotlin FAILED
+2 actionable tasks: 2 executed
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:92:39 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:93:40 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:94:36 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:95:40 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:96:39 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:97:45 
+Unresolved reference: request
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:100:74 
+No value passed for parameter 'downPaymentAmount'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:100:74 
+No value passed for parameter 'dailyCommitment'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:121:30 
+Unresolved reference: userId
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:125:54 
+Type mismatch: inferred type is Unit but GoalDetail was expected
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:139:61 
+Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public operator fun Url.Companion.invoke(fullUrl: String): Url defined in io.ktor.http
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:140:37 
+Unresolved reference: DepositUseCase
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:148:78 
+No value passed for parameter 'paymentUrl'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:148:78 
+No value passed for parameter 'reference'
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:157:32 
+Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public operator fun Url.Companion.invoke(fullUrl: String): Url defined in io.ktor.http
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:171:29 
+Unresolved reference: id
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:172:33 
+Unresolved reference: userId
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:173:40 
+Unresolved reference: currentStreak
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:174:40 
+Unresolved reference: longestStreak
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:175:37 
+Unresolved reference: missedDays
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:176:33 
+Unresolved reference: status
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:177:36 
+Unresolved reference: lockLevel
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:178:40 
+Unresolved reference: lastDepositAt
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:179:39 
+Unresolved reference: lastMissedAt
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:180:39 
+Unresolved reference: lockoutUntil
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:181:44 
+Unresolved reference: tempLockTimestamp
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:182:43 
+Unresolved reference: appLockTimestamp
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:183:42 
+Unresolved reference: warningIssuedAt
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:184:35 
+Unresolved reference: isLocked
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:185:38 
+Unresolved reference: isAppLocked
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:186:39 
+Unresolved reference: isTempLocked
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:187:40 
+Unresolved reference: isFullyLocked
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:204:27 
+Unresolved reference: isAdmin
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:220:27 
+Unresolved reference: isAdmin
+e: 
+file:///D:/Desktop/AppHub/SulckBackend/ktor-app/src/main/kotlin/com/sulck/backend/presentation/routes/Routes.kt:260:32 
+Unresolved reference: isAdmin
