@@ -9,183 +9,60 @@ import java.util.UUID
 import java.time.Instant
 
 // UUID and Instant serializers using kotlinx-serialization built-in
-import kotlinx.serialization.serializers.UUIDSerializer
-import kotlinx.serialization.serializers.InstantSerializer
-import kotlinx.serialization.serializers.ListSerializer
-
-val UUID_serializer: KSerializer<UUID> = UUIDSerializer
-val Instant_serializer: KSerializer<Instant> = InstantSerializer
+val UUID_serializer: KSerializer<UUID> = kotlinx.serialization.serializers.builtInSerializers().serializer(java.type.UUID::class.java)
+val Instant_serializer: KSerializer<Instant> = kotlinx.serialization.serializers.builtInSerializers().serializer(java.time.Instant::class.java)
 
 // Helper for serializing Lists of serializable types
 fun <T : Serializable> listSerializer(of: KSerializer<T>): KSerializer<List<T>> {
-    return ListSerializer(of)
+    return kotlinx.serialization.serializers.ListSerializer(of)
 }
 
-@Serializable
-sealed class AuthRequest {
-    @Serializable
-    data class Register(
-        val email: String,
-        val phone: String,
-        val fullName: String,
-        val password: String
-    ) : AuthRequest()
-
-    @Serializable
-    data class Login(
-        val emailOrPhone: String,
-        val password: String
-    ) : AuthRequest()
-
-    @Serializable
-    data class Refresh(
-        val refreshToken: String
-    ) : AuthRequest()
-}
+// ==================== Transaction DTOs ====================
 
 @Serializable
-sealed class AuthResponse {
-    @Serializable
-    data class Register(val user: UserSummary) : AuthResponse()
-
-    @Serializable
-    data class Login(
-        val user: UserSummary,
-        val accessToken: String,
-        val refreshToken: String
-    ) : AuthResponse()
-
-    @Serializable
-    data class Refresh(
-        val accessToken: String,
-        val refreshToken: String
-    ) : AuthResponse()
-
-    @Serializable
-    data class Me(val user: UserSummary) : AuthResponse()
-}
-
-@Serializable
-data class UserSummary(
-    val id: UUID,
-    val email: String,
-    val phone: String,
-    val fullName: String,
-    val isActive: Boolean,
-    val isVerified: Boolean,
-    val createdAt: Instant
-) : Serializable // explicit to ensure compatibility
-
-@Serializable
-sealed class GoalRequest {
-    @Serializable
-    data class Create(
-        val title: String,
-        val description: String,
-        val targetAmount: Long,
-        val currency: String? = null,
-        val durationDays: Int,
-        val cadenceDays: Int? = null,
-        val lockedAssetSerial: String? = null
-    ) : GoalRequest()
-}
-
-@Serializable
-sealed class GoalResponse {
-    @Serializable
-    data class Create(
-        val goal: GoalSummary,
-        val downPaymentAmount: Long,
-        val dailyCommitment: Long
-    ) : GoalResponse()
-
-    @Serializable
-    data class List(val goals: List<GoalSummary>) : GoalResponse()
-
-    @Serializable
-    data class Detail(val goal: GoalDetail) : GoalResponse()
-}
-
-@Serializable
-data class GoalSummary(
-    val id: UUID,
-    val title: String,
-    val targetAmount: Long,
-    val currency: String,
-    val currentProgress: Long,
-    val dailyCommitment: Long,
-    val cadenceDays: Int,
-    val status: String,
-    val progressPercent: Double,
-    val daysRemaining: Long,
-    val tier: String
-)
-
-@Serializable
-data class GoalDetail(
-    val id: UUID,
-    val userId: UUID,
-    val title: String,
-    val description: String,
-    val targetAmount: Long,
-    val currency: String,
-    val dailyCommitment: Long,
-    val cadenceDays: Int,
-    val startDate: Instant,
-    val targetDate: Instant,
-    val lockedAssetSerial: String?,
-    val status: String,
-    val currentProgress: Long,
-    val downPaymentPaid: Boolean,
-    val progressPercent: Double,
-    val daysRemaining: Long,
-    val tier: String
-)
-
-@Serializable
-sealed class TransactionRequest {
-    @Serializable
+data class TransactionResponse {
     data class Deposit(
-        val goalId: String,
-        val amount: Long,
-        val provider: String,
-        val phoneNumber: String
-    ) : TransactionRequest()
-}
-
-@Serializable
-sealed class TransactionResponse {
-    @Serializable
-    data class Deposit(
-        val transaction: TransactionSummary,
+        val transaction: com.sulck.backend.domain.entity.Transaction,
         val paymentUrl: String?,
         val reference: String
-    ) : TransactionResponse()
+    )
 
-    @Serializable
-    data class List(val transactions: List<TransactionSummary>) : TransactionResponse()
+    data class List(
+        val transactions: List<com.sulck.backend.domain.entity.Transaction>
+    )
+
+    data class Error(
+        val message: String
+    )
 }
 
-@Serializable
-data class TransactionSummary(
-    val id: UUID,
-    val userId: UUID,
-    val goalId: UUID?,
-    val amount: Long,
-    val currency: String,
-    val type: String,
-    val status: String,
-    val provider: String?,
-    val providerRef: String?,
-    val description: String?,
-    val createdAt: Instant,
-    val completedAt: Instant?
-)
+// ==================== Error DTO ====================
 
 @Serializable
-data class StreakResponse(
-    val streak: StreakSummary?
+data class ErrorResponse(
+    val message: String
 )
+
+// ==================== Goal DTOs ====================
+
+@Serializable
+data class GoalResponse {
+    data class Create(
+        val goal: com.sulck.backend.domain.entity.Goal,
+        val downPaymentAmount: Long,
+        val dailyCommitment: Long
+    )
+
+    data class List(
+        val goals: List<com.sulck.backend.domain.entity.Goal>
+    )
+
+    data class Detail(
+        val goal: com.sulck.backend.domain.entity.Goal
+    )
+}
+
+// ==================== Streak DTOs ====================
 
 @Serializable
 data class StreakSummary(
@@ -209,10 +86,79 @@ data class StreakSummary(
 )
 
 @Serializable
-data class DeviceStatusResponse(
-    val devices: List<DeviceStatus>
+data class StreakResponse(
+    val summary: StreakSummary
 )
 
+// ==================== Authentication DTOs ====================
+
+@Serializable
+data class AuthResponse {
+    data class Register(
+        val user: com.sulck.backend.domain.entity.User
+    )
+
+    data class Login(
+        val result: String
+    )
+
+    data class Refresh(
+        val result: String
+    )
+
+    data class Me(
+        val user: com.sulck.backend.domain.entity.User
+    )
+}
+
+// ==================== Emergency Unlock DTOs ====================
+
+@Serializable
+data class EmergencyUnlockInput(
+    val userId: UUID,
+    val policyId: UUID,
+    val requestedBy: UUID,
+    val fromLockLevel: String,
+    val toLockLevel: String,
+    val reason: String,
+    val durationHours: Int?,
+    val contactId: UUID?
+)
+
+@Serializable
+data class RejectUnlockInput(
+    val reason: String
+)
+
+@Serializable
+data class EmergencyUnlockRequestSummary(
+    val id: UUID,
+    val userId: UUID,
+    val policyId: UUID,
+    val requestedBy: UUID,
+    val fromLockLevel: String,
+    val toLockLevel: String,
+    val reason: String,
+    val durationHours: Int?,
+    val status: String,
+    val approvedBy: UUID?,
+    val approvedAt: Instant?,
+    val rejectedBy: UUID?,
+    val rejectedAt: Instant?,
+    val effectiveAt: Instant?,
+    val expiresAt: Instant?,
+    val createdAt: Instant
+)
+
+@Serializable
+data class EmergencyUnlockRequestResponse(
+    val summary: EmergencyUnlockRequestSummary
+)
+
+// ==================== Device Status DTOs ====================
+
+// DeviceStatus is defined as a nested class in EmergencyUnlockUseCases.GetAllDevicesStatusUseCase.
+// Here we extract it as a top-level presentation DTO with matching properties.
 @Serializable
 data class DeviceStatus(
     val userId: UUID,
@@ -238,109 +184,35 @@ data class DeviceStatus(
 )
 
 @Serializable
-data class EmergencyUnlockRequestResponse(
-    val request: EmergencyUnlockRequestSummary?
+data class DeviceStatusResponse(
+    val deviceStatusList: List<DeviceStatus>
 )
 
-@Serializable
-data class EmergencyUnlockRequestSummary(
-    val id: UUID,
-    val userId: UUID,
-    val policyId: UUID,
-    val requestedBy: UUID,
-    val fromLockLevel: String,
-    val toLockLevel: String,
-    val reason: String,
-    val durationHours: Int?,
-    val status: String,
-    val approvedBy: UUID?,
-    val approvedAt: Instant?,
-    val rejectedBy: UUID?,
-    val rejectedAt: Instant?,
-    val rejectionReason: String?,
-    val effectiveAt: Instant?,
-    val expiresAt: Instant?,
-    val createdAt: Instant
-)
+// ==================== Paystack DTOs ====================
 
-@Serializable
-data class EmergencyContactResponse(
-    val contacts: List<EmergencyContactSummary>
-)
-
-@Serializable
-data class EmergencyContactSummary(
-    val id: UUID,
-    val userId: UUID,
-    val contactType: String,
-    val contactValue: String,
-    val status: String,
-    val priority: String,
-    val reason: String?,
-    val notes: String?,
-    val resolvedAt: Instant?,
-    val createdAt: Instant
-)
-
-@Serializable
-data class ErrorResponse(
-    val error: String,
-    val message: String? = null
-)
-
-@Serializable
-data class EmergencyUnlockInput(
-    val userId: UUID,
-    val policyId: UUID,
-    val fromLockLevel: String,
-    val toLockLevel: String,
-    val reason: String,
-    val durationHours: Int? = null,
-    val contactId: UUID? = null
-)
-
-@Serializable
-data class RejectUnlockInput(
-    val reason: String
-)
-
-// Paystack webhook DTOs
 @Serializable
 data class PaystackWebhookData(
-    val event: String,
     val data: PaystackWebhookData.Data
-) {
+
     @Serializable
     data class Data(
-        val id: Long,
-        val domain: String,
-        val status: String,
         val reference: String,
         val amount: Long,
-        val currency: String,
-        val channel: String,
-        val paid_at: String,
-        val created_at: String,
-        val customer: Customer,
-        val authorization: Authorization
-    ) {
-        @Serializable
-        data class Customer(
-            val id: Long,
-            val email: String,
-            val phone: String?
-        )
-        @Serializable
-        data class Authorization(
-            val authorization_code: String,
-            val card_type: String,
-            val last4: String,
-            val exp_month: String,
-            val exp_year: String,
-            val bin: String,
-            val bank: String,
-            val brand: String,
-            val reusable: Boolean
-        )
-    }
+        val channel: String
+    )
+)
+
+// ==================== Goal DTOs (continued) ====================
+
+@Serializable
+data class GoalRequest {
+    data class Create(
+        val title: String,
+        val description: String,
+        val targetAmount: Long,
+        val currency: String = "GHS",
+        val durationDays: Int,
+        val cadenceDays: Int = 1,
+        val lockedAssetSerial: String? = null
+    )
 }
