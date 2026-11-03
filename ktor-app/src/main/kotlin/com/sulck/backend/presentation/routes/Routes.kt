@@ -1,6 +1,7 @@
 package com.sulck.backend.presentation.routes
 
 import com.sulck.backend.config.PaystackConfig
+import com.sulck.backend.domain.entity.User
 import com.sulck.backend.domain.usecase.*
 import com.sulck.backend.infrastructure.service.PaystackService
 import com.sulck.backend.presentation.dto.*
@@ -43,7 +44,7 @@ fun Routing.configureRoutes(
     route("/auth") {
         post("/register") {
             val request = call.receive<AuthRequest.Register>()
-            val user = authUseCases.CreateUserUseCase(
+            val user = authUseCases.createUserUseCase(
                 request.email,
                 request.phone,
                 request.fullName,
@@ -54,13 +55,13 @@ fun Routing.configureRoutes(
 
         post("/login") {
             val request = call.receive<AuthRequest.Login>()
-            val result = authUseCases.AuthenticateUserUseCase(request.emailOrPhone, request.password)
+            val result = authUseCases.authenticateUserUseCase(request.emailOrPhone, request.password)
             call.respond(AuthResponse.Login(result))
         }
 
         post("/refresh") {
             val request = call.receive<AuthRequest.Refresh>()
-            val result = authUseCases.RefreshTokenUseCase(request.refreshToken)
+            val result = authUseCases.refreshTokenUseCase(request.refreshToken)
             call.respond(AuthResponse.Refresh(result))
         }
 
@@ -87,7 +88,7 @@ fun Routing.configureRoutes(
                     ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
 
                 val output = createGoalUseCase(
-                    GoalUseCases.CreateGoalUseCase.Input(
+                    createGoalUseCase.Input(
                         userId = userId,
                         title = request.title,
                         description = request.description,
@@ -116,7 +117,7 @@ fun Routing.configureRoutes(
                     val userId = principal?.subject?.let { UUID.fromString(it) }
                         ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
                     val goalId = UUID.fromString(call.parameters["goalId"]!!)
-                    val goal = goalUseCases.GetGoalUseCase(goalId)
+                    val goal = goalUseCases.getGoalUseCase(goalId)
                         ?: call.respond(HttpStatusCode.NotFound, ErrorResponse("Goal not found"))
                         ?: return@get
                     if (goal.userId != userId) {
@@ -137,8 +138,8 @@ fun Routing.configureRoutes(
             val userId = principal?.subject?.let { UUID.fromString(it) }
                 ?: return@post call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
 
-            val output = transactionUseCases.DepositUseCase.invoke(
-                TransactionUseCases.DepositUseCase.Input(
+            val output = transactionUseCases.depositUseCase.invoke(
+                transactionUseCases.DepositUseCase.Input(
                     userId = userId,
                     goalId = UUID.fromString(request.goalId),
                     amount = request.amount,
@@ -166,7 +167,7 @@ fun Routing.configureRoutes(
             val principal = call.authentication.principal<io.ktor.server.auth.jwt.JWTPrincipal>()
             val userId = principal?.subject?.let { UUID.fromString(it) }
                 ?: return@get call.respond(HttpStatusCode.Unauthorized, ErrorResponse("Invalid authentication"))
-            val streak = streakUseCases.GetStreakUseCase(userId)
+            val streak = streakUseCases.getStreakUseCase(userId)
             val streakSummary = streak?.let {
                 StreakSummary(
                     id = it.id,
@@ -265,7 +266,7 @@ fun Routing.configureRoutes(
 
                 val input = call.receive<EmergencyUnlockInput>()
                 val request = emergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase(
-                    EmergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase.Input(
+                    emergencyUnlockUseCases.CreateEmergencyUnlockRequestUseCase.Input(
                         userId = input.userId,
                         policyId = input.policyId,
                         requestedBy = adminUserId,
@@ -291,7 +292,6 @@ fun Routing.configureRoutes(
                     approvedAt = request.approvedAt,
                     rejectedBy = request.rejectedBy,
                     rejectedAt = request.rejectedAt,
-                    rejectionReason = request.rejectionReason,
                     effectiveAt = request.effectiveAt,
                     expiresAt = request.expiresAt,
                     createdAt = request.createdAt
@@ -328,7 +328,6 @@ fun Routing.configureRoutes(
                     approvedAt = request.approvedAt,
                     rejectedBy = request.rejectedBy,
                     rejectedAt = request.rejectedAt,
-                    rejectionReason = request.rejectionReason,
                     effectiveAt = request.effectiveAt,
                     expiresAt = request.expiresAt,
                     createdAt = request.createdAt
@@ -365,7 +364,6 @@ fun Routing.configureRoutes(
                     approvedAt = request.approvedAt,
                     rejectedBy = request.rejectedBy,
                     rejectedAt = request.rejectedAt,
-                    rejectionReason = request.rejectionReason,
                     effectiveAt = request.effectiveAt,
                     expiresAt = request.expiresAt,
                     createdAt = request.createdAt
@@ -403,7 +401,6 @@ fun Routing.configureRoutes(
                     approvedAt = request.approvedAt,
                     rejectedBy = request.rejectedBy,
                     rejectedAt = request.rejectedAt,
-                    rejectionReason = request.rejectionReason,
                     effectiveAt = request.effectiveAt,
                     expiresAt = request.expiresAt,
                     createdAt = request.createdAt
@@ -428,8 +425,8 @@ fun Routing.configureRoutes(
 
         if (event == "charge.success" || event == "charge.failed") {
             val data = Json.decodeFromString<PaystackWebhookData>(payload)
-            val result = transactionUseCases.ProcessWebhookUseCase.invoke(
-                TransactionUseCases.ProcessWebhookUseCase.Input(
+            val result = transactionUseCases.processWebhookUseCase.invoke(
+                transactionUseCases.ProcessWebhookUseCase.Input(
                     reference = data.data.reference,
                     status = if (event == "charge.success") "success" else "failed",
                     amount = data.data.amount,
